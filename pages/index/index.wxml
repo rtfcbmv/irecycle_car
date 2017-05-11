@@ -1,0 +1,2 @@
+<import src="../../components/test/test1.wxml"></import>
+<template is="map"></template>

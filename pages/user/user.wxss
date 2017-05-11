@@ -1,0 +1,2 @@
+/* pages/user/user.wxss */
+@import "../../components/user/index.wxss";

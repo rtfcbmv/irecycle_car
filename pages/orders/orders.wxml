@@ -1,0 +1,3 @@
+<!--pages/orders/orders.wxml-->
+<import src="../../components/orders/index.wxml"></import>
+<template is="orders" data="{{order_list:order_list,num:num,count_down:count_down}}"></template>

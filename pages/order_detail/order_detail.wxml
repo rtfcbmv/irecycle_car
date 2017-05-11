@@ -1,0 +1,3 @@
+<!--pages/order_detail/order_detail.wxml-->
+<import src="../../components/orders/index.wxml"></import>
+<template is="orderdetail" data="{{order_list:order_list,orderid:orderid}}"></template>

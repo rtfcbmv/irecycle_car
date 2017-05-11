@@ -1,0 +1,3 @@
+@import "../../components/test/test1.wxss";
+@import "../../components/secondHand/index.wxss";
+@import "../../components/banjia/index.wxss";

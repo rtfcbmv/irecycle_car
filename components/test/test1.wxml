@@ -1,0 +1,150 @@
+<template name="map">
+    <map id="myMap" show-location />
+</template>
+
+<template name="uplist">
+    <view class="uplist-panel">
+        <view bindtap="change_service" data-index="0" class="uplist-item {{service==0 ? 'active':''}}">
+            废品处理
+        </view>
+        
+        <view bindtap="change_service" data-index="1" class="uplist-item {{service==1 ? 'active':''}}">
+            二手代卖
+        </view>
+        
+        <view bindtap="change_service" data-index="2" class="uplist-item {{service==2 ? 'active':''}}">
+            我来搬家
+        </view>
+        <view class="uplist-progress" animation="{{animationData_progress}}"></view>
+    </view>
+</template>
+
+
+<template name="goods-list">
+<view class="goods_left">
+    <block wx:for="{{goods_type}}">
+      <view bindtap="switchtab" data-index="{{index}}" class="goods_left_items {{selected_type == index ? 'active' : ''}}" >
+      {{item}}
+      </view>
+    </block>
+    <view class="left_items_polish" animation="{{animationData_left_polish}}"></view>
+</view>
+
+<view class="goods_right" >
+    <block wx:for="{{goods[selected_type]}}">
+    <view class="goods_right_items {{selected_goods == index ? 'active' : ''}}">
+        <view class="top_panel">
+            <image src="{{item.imgUrl}}" class="goods_image"></image>
+            <view class="righttext">
+                <text class="name">{{item.name}}</text>
+                <text class="price">{{item.price}}</text>
+            </view>
+            <view bindtap="selectgoods" data-index="{{index}}">
+            <block wx:if="{{item.select<0}}">
+                <image  src="../../static/image/add.png" class="addbutton"></image>
+            </block>
+            <block wx:else>
+                <image  src="../../static/image/modify.png" class="addbutton"></image>
+            </block>
+            </view>
+        </view>
+        <block wx:if="{{index==selected_goods}}">
+        <view class="bottom-panel">
+            <block wx:for="{{price_range}}" wx:for-item="weight_item" wx:for-index="weight_index">
+            <view bindtap="selectweight" data-weight_index="{{weight_index}}" data-index="{{index}}" class="item {{item.select==weight_index ? 'active' : ''}}">
+                {{weight_item}}
+            </view>
+            </block>   
+        </view>
+        </block>
+    </view>
+    </block>
+</view>
+</template>
+
+<template name="Hover_button">
+    <navigator url="../basket/basket" open-type="switchTab">
+    <view bindtap="tap"  class="Hover_button-panel" style="position:fixed;left:{{left}}rpx;top:{{top}}rpx;" bindtouchmove="Hovermove">
+    <image src="../../static/image/buycar_white.png"></image>
+    </view>
+    </navigator>
+</template>
+
+<template name="goods_cartoon">
+    <view animation="{{animationData_goods}}" style="    position:fixed;left:{{left+20}}rpx;top:{{top+20}}rpx;height:50rpx;width:50rpx;">
+        <image src="{{image}}" style="height:50rpx;width:60rpx"></image>
+    </view>
+</template>
+
+<template name="basket"> 
+
+    <view class="com-operate">
+        <view class="com-operate-select" bindtap="order_select_all">
+            <block wx:if="{{select_all==0}}">
+                <image src="../../static/image/select.png" ></image>
+            </block>
+            <block wx:else>
+                <image src="../../static/image/selected.png" ></image>
+            </block>
+            <text>全选</text>
+        </view>
+        <view bindtap="edittap">
+          <block wx:if="{{operate.edit==0}}">
+          <text class="com-operate-edit">编辑</text>
+          </block>
+          <block wx:else>
+          <text class="com-operate-edit">退出编辑</text>
+          </block>
+        </view>
+    </view>
+
+
+    <view class="basket-panel">
+        <block wx:for="{{order_list}}">
+        <view class="basket-item">
+            <view bindtap="order_select" data-index="{{index}}">
+            <block wx:if="{{operate.select[index]==0}}">
+                <image src="../../static/image/select.png" class="select-frame"></image>
+            </block>
+            <block wx:else>
+                <image src="../../static/image/selected.png" class="select-frame"></image>
+            </block>
+            </view>
+            <image src="{{goods[item.type_id][item.goods_id].imgUrl}}" class="goods_image"></image>
+            <view class="basket-righttext">
+                <text class="name">{{goods[item.type_id][item.goods_id].name}}</text>
+                <text class="price">{{goods[item.type_id][item.goods_id].price}}</text>
+                <view class="button-panel">
+                <block wx:if="{{operate.edit==1}}">
+                <view class="switchbutton" style="width:40rpx;margin-left: 100rpx;">-</view>
+                <view class="switchbutton" style="background:#FFF;">{{weight_range[item.weight_id]}}</view>
+                <view class="switchbutton" style="width:40rpx">+</view>
+                </block>
+                <block wx:else>
+                <view class="switchbutton" style="background:#FFF;margin-left: 140rpx;border: 1rpx solid #FFF;">{{weight_range[item.weight_id]}}</view>
+                </block>
+                </view>
+            </view>
+
+        </view>
+        </block>
+    </view>
+
+    <view class="com-count-panel"> 
+      <view class="sumcount">
+      <text style="color:#FAC328;font-weight: bold;">共计: {{amount}}件</text>
+
+      </view>
+      <view class="settlement">提交</view>
+  </view>
+
+</template>
+
+<template name="empty-basket">
+    <view class="empbasket-panel">
+      <view class="uplist"></view>
+        <view>
+
+        </view>
+      </view>
+</template>

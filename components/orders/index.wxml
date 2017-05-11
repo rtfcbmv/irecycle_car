@@ -1,0 +1,79 @@
+<template name="orders">
+<view class="order-title-panel">
+  <view class="title">附近的订单</view>
+  <view bindtap="refresh" class="refresh">
+    <text>刷新计时：{{count_down}}</text>
+    <image src="../../static/image/refresh.png"></image>
+  </view>
+</view>
+
+<scroll-view class="orders-panel" scroll-y>
+  <block wx:for="{{order_list}}">
+  <navigator url="../order_detail/order_detail?index={{index}}">
+  <view class="orders-item">
+    <view class="name">{{item.name}}</view>
+    <view class="righttext">
+      <view class="address">{{item.address}}</view>
+      <view class="time">{{item.time}}</view>
+    </view>
+    <view class="order-take">
+    接单
+    </view>
+  </view>
+  </navigator>
+  </block>
+</scroll-view>
+
+<view class="order-note-panel">
+<text>共检索到：{{num}}条订单</text>
+</view>
+
+</template>
+
+
+
+
+<template name="orderdetail">
+<view class="detail-chief">
+  <view class="title">
+    单号：175120{{orderid}}
+  </view>
+  <view class="term">
+    <view class="term-item">
+      <image src="../../static/image/name.png" class="image"></image>
+      <text>{{order_list[orderid].name}}</text>
+    </view>
+    <view class="term-item">
+      <image src="../../static/image/time.png" class="image"></image>
+      <text>{{order_list[orderid].time}}</text>
+    </view>
+    <view class="term-item">
+      <image src="../../static/image/phone.png" class="image"></image>
+      <text>{{order_list[orderid].phone}}</text>
+    </view>
+    <navigator url="../index/index">
+    <view class="term-item" style="border-bottom:#FFF">
+      <image src="../../static/image/address.png" class="image"></image>
+      <text>{{order_list[orderid].address}}</text>
+      <image src="../../static/image/more.png" class="more"></image>
+    </view>
+    </navigator>
+  </view>
+</view>
+
+<view class="detail-remark">
+<view class="title">备注：</view>
+<text>{{order_list[orderid].remark}}</text>
+</view>
+
+<view class="detail-image">
+<view class="title">照片：</view>
+<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494500571320&di=94cee9054af601f56022cd315a0415f7&imgtype=0&src=http%3A%2F%2Fs15.sinaimg.cn%2Fmiddle%2F44d869bbg79642aa2119e%26690">
+</image>
+</view>
+
+
+<view class="ordertake-panel">
+接单
+</view>
+</template>

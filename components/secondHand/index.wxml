@@ -1,0 +1,13 @@
+<template name="secondHand">
+  <view class="second-hand"animation="{{animation_textarea}}" >
+    <view class="second-hand-photo" bindtap="secondHand_addPhoto">
+      <image src="{{secondHand_imgUrl?secondHand_imgUrl:'../../static/image/photo.png'}}"></image>
+      <view class="second-hand-photo-text">点击添加物品照片</view>
+    </view>
+    <textarea name="secondHandInfo"  cols="30" rows="10" bindfocus="secondHand_textareaFocused"
+    bindblur="secondHand_textareaBlured"
+    ></textarea>
+    <button type="primary"  plain >提交</button>
+
+  </view>
+</template>

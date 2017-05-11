@@ -1,0 +1,5 @@
+/* pages/order_detail/order_detail.wxss */
+page{
+  background:#f9f9f9;
+}
+@import "../../components/orders/index.wxss";

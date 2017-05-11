@@ -1,0 +1,39 @@
+{
+  "pages":[
+    "pages/orders/orders",
+    "pages/service/service",
+    "pages/index/index",
+    "pages/basket/basket",
+    "pages/order_detail/order_detail",
+    "pages/user/user"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#FAC328",
+    "navigationBarTitleText": "我来收（回收车端）",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh":"true"
+  },
+  "tabBar":{
+    "color":"#b3b3b3",
+    "selectedColor": "#515151",
+    "borderStyle":"white",
+    "backgroundColor":"#fff",
+    "list": [{
+      "pagePath": "pages/orders/orders",
+      "text": "接单",
+      "iconPath":"static/image/orders.png",
+      "selectedIconPath":"static/image/orders_click.png"
+    }, {
+      "pagePath": "pages/user/user",
+      "text": "个人中心",
+      "iconPath":"static/image/user.png",
+      "selectedIconPath":"static/image/user_click.png"
+    }]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  }
+
+}

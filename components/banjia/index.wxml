@@ -1,0 +1,6 @@
+<template name="banjia">
+    <view class="banjia" bindtap="banjia_makePhoneCall">
+        <image src="../../static/image/call.png"></image>
+    </view>
+    <view class="banjia-info">呼叫搬家公司</view>
+</template>

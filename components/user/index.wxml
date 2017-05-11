@@ -1,0 +1,23 @@
+<template name="user">
+    <view class="user">
+        <view class="user-info">
+            <image src="../../static/tempImage/user.png"></image>
+            <view class="user-info-detail">
+                <view class="user-name">铁柱</view>
+                <view class="user-more">查看或修改个人信息</view>
+            </view>
+        </view>
+        <view class="user-item">
+            <view class="item">
+                <image src="../../static/image/my_order.png"></image>
+                <view class="item-title">我的订单</view>
+            </view>
+            <view class="item">
+                <image src="../../static/image/my_secondhand.png"></image>
+                <view class="item-title">二手详情</view>
+                </view>
+            <view class="item"><image src="../../static/image/my_kefu.png"></image>
+                <view class="item-title">客户服务</view></view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,9 @@
+{
+  "navigationBarBackgroundColor": "#FAC328",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我来收（回收车端）",
+  "backgroundColor": "#FAC328",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh":"false"
+  
+}
