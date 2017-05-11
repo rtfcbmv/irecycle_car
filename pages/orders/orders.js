@@ -46,15 +46,22 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var sum=0
+    for (var i = 0; i < app.order_list.length;i++)
+    {
+      if (app.order_list[i].taken==0)
+        sum++
+    }
     this.setData({
-      num: this.data.order_list.length
+      order_list: app.order_list,
+      num: sum
     })
   },
 
@@ -62,7 +69,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+ 
   },
 
   /**
