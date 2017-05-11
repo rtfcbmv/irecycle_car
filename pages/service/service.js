@@ -61,7 +61,7 @@ Page({
     console.log(e)
     this.setData({
       left:2*e.touches[0].clientX-25,
-      top:2*e.touches[0].clientY+90
+      top:2*e.touches[0].clientY+20
     })
   },
 
