@@ -40,7 +40,7 @@
   height:800rpx;
   background:#FFF;
 }
-.orders-panel .orders-item{
+.orders-item{
   margin-left:5%;
 
   height:100rpx;
@@ -50,14 +50,14 @@
   display: flex;
   flex-direction: row;
 }
-.orders-panel .orders-item .name{
+.orders-item .name{
   margin-left:20rpx;
   height:100rpx;
   width:200rpx;
   line-height:100rpx;
   font-size:50rpx;
 }
-.orders-panel .orders-item .righttext{
+.orders-item .righttext{
   display: flex;
   flex-direction: column;
 
@@ -66,10 +66,10 @@
   font-size:30rpx;
   line-height:50rpx;
 }
-.orders-panel .orders-item .righttext .address{
+.orders-item .righttext .address{
   
 }
-.orders-panel .orders-item .righttext .time{
+.orders-item .righttext .time{
   
 }
 .order-take{
@@ -124,7 +124,7 @@
   width:100%;
   border-bottom:1rpx solid #ededed;
   padding-top:20rpx;
-  
+  padding-bottom:20rpx;
   background: #FFF;
 }
 .detail-chief .title{
@@ -160,7 +160,7 @@
   font-weight:500;
   margin-left:50rpx;
 }
-.more{
+.more-right{
   margin-top:25rpx;
   position:absolute;
   right:6%;
@@ -227,4 +227,65 @@
 .detail-image image{
   width:100%;
   margin-bottom:20rpx;
+}
+
+/*myorders页*/
+.uplist-panel{
+  position:fixed;
+  top:0rpx;
+  width:100%;
+  height:100rpx;
+  background:#FFF;
+
+  display: flex;
+  flex-direction: row;
+}
+.uplist-panel .item{
+  width:50%;
+  height:100rpx;
+  font-size:30rpx;
+  line-height:80rpx;
+  text-align:center;
+}
+.uplist-panel .item.active{
+  color:#FAC328;
+  border-bottom:5rpx solid #FAC328;
+}
+
+.empty-list{
+  margin-top:150rpx;
+  width:100%;
+  text-align:center;
+  font-size:30rpx;
+}
+.myorder_list{
+  margin-top:120rpx;
+  background:#FFF;
+  padding-top:30rpx;
+  padding-bottom:30rpx;
+}
+.more-down{
+  margin-top:40rpx;
+  position:absolute;
+  right:6%;
+  width:50rpx;
+  height:25rpx
+}
+.operate-panel{
+  height:100rpx;
+  width:100%;
+  border-bottom:1rpx dashed #d4d4d4;
+  padding:25rpx 0rpx 0rpx 300rpx;
+  display: flex;
+  flex-direction: row;
+}
+.operate-panel .item{
+  margin-left:50rpx;
+  padding:5rpx 10rpx 5rpx 10rpx;
+  height:70rpx;
+  line-height:70rpx;
+  font-size:35rpx;
+  color:#FFF;
+  border-radius: 10rpx;
+  background:#66CDAA;
 }

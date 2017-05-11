@@ -27,7 +27,6 @@
 <view class="order-note-panel">
 <text>共检索到：{{num}}条订单</text>
 </view>
-
 </template>
 
 
@@ -55,7 +54,7 @@
     <view class="term-item" style="border-bottom:#FFF">
       <image src="../../static/image/address.png" class="image"></image>
       <text>{{order_list[orderid].address}}</text>
-      <image src="../../static/image/more.png" class="more"></image>
+      <image src="../../static/image/more.png" class="more-right"></image>
     </view>
     </navigator>
   </view>
@@ -72,8 +71,50 @@
 </image>
 </view>
 
-
 <view class="ordertake-panel">
 接单
 </view>
+</template>
+
+
+<template name="myorders">
+<view class="uplist-panel">
+  <view bindtap="changepape" data-index="0" class="item {{order_state==0 ? 'active':''}}">
+    待收货
+  </view>
+  <view bindtap="changepape" data-index="1" class="item {{order_state==1 ? 'active':''}}">
+    已完成
+  </view>
+</view>
+
+<block wx:if="{{order_state==0}}">
+<view class="myorder_list">
+    <block wx:for="{{myorder_list}}">
+    <view bindtap="selectorder" data-index="{{index}}" class="orders-item">
+      <view class="name">{{item.name}}</view>
+      <view class="righttext">
+        <view class="address">{{item.address}}</view>
+        <view class="time">{{item.time}}</view>
+      </view>
+      <image src="../../static/image/more_{{select_order==index?'up':'down'}}.png" class="more-down"></image>
+    </view>
+    
+    <block wx:if="{{select_order==index}}">
+    <view class="operate-panel">
+      <navigator url="../order_detail/order_detail?index={{index}}">
+      <view class="item">查看详情</view>
+      </navigator>
+      <navigator url="../service/service?index={{index}}">
+      <view class="item">登记处理</view>
+      </navigator>
+    </view>
+    </block>
+    </block>
+</view>
+</block>
+<block wx:else>
+<view class="empty-list">暂时还没有订单~</view>
+</block>
+
+
 </template>

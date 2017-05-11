@@ -5,16 +5,13 @@
 <template name="uplist">
     <view class="uplist-panel">
         <view bindtap="change_service" data-index="0" class="uplist-item {{service==0 ? 'active':''}}">
-            废品处理
+            类别登记
         </view>
         
         <view bindtap="change_service" data-index="1" class="uplist-item {{service==1 ? 'active':''}}">
-            二手代卖
+            金额登记
         </view>
         
-        <view bindtap="change_service" data-index="2" class="uplist-item {{service==2 ? 'active':''}}">
-            我来搬家
-        </view>
         <view class="uplist-progress" animation="{{animationData_progress}}"></view>
     </view>
 </template>
