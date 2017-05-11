@@ -28,13 +28,17 @@ Page({
   order_takeing: function (e) {
     app.order_list[e.currentTarget.dataset.index].taken=1
     this.setData({
-      order_list: app.order_list
+      order_list: app.order_list,
+      num:this.data.num-1
     })
     app.myorder_list.push(e.currentTarget.dataset.index)
     //console.log(app.myorder_list)
 
   },
   onLoad: function (options) {
+    this.setData({
+      order_list: app.order_list
+    })
     countdown(this)
   },
 
@@ -50,8 +54,7 @@ Page({
    */
   onShow: function () {
     this.setData({
-      num: this.data.order_list.length,
-      order_list: app.order_list
+      num: this.data.order_list.length
     })
   },
 
