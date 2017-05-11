@@ -1,11 +1,14 @@
 // pages/myorders/myorders.js
+
+var app = getApp()
 Page({
 
-
   data: {
-    myorder_list: [{ "name": "景先生", "address": "南岗区西大直街91号", "phone": "110", "time": "2017/6/13/8:00" }, { "name": "霍小姐", "address": "南岗区西大直街93号", "phone": "119", "time": "2017/6/13/15:00" }, { "name": "奕大爷", "address": "南岗区西大直街94号", "phone": "120", "time": "2017/6/13/15:00" }],
+    order_list: [],
+    myorder_list:[],
     order_state:0,
-    select_order:-1
+    select_order:-1,
+    num:0
   },
 
   changepape:function(e){
@@ -20,14 +23,27 @@ Page({
   },
 
 
-  onLoad: function (options) {
-  
+  onLoad: function () {
+    this.setData({
+      order_list: app.order_list
+    })
+    var sub = []
+    for (var i = 0; i < app.myorder_list.length;i++)
+    {
+      sub.push(this.data.order_list[app.myorder_list[i]])
+    }
+    this.setData({
+      myorder_list:sub
+    })
   },
   onReady: function () {
   
   },
   onShow: function () {
-  
+    this.setData({
+      order_list: app.order_list,
+      num: app.myorder_list.length
+    })
   },
   onHide: function () {
   

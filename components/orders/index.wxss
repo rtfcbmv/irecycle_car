@@ -39,6 +39,8 @@
   width:97.5%;
   height:800rpx;
   background:#FFF;
+  display: flex;
+  flex-direction: column;
 }
 .orders-item{
   margin-left:5%;
@@ -61,7 +63,7 @@
   display: flex;
   flex-direction: column;
 
-  width:500rpx;
+  width:400rpx;
 
   font-size:30rpx;
   line-height:50rpx;
@@ -74,7 +76,7 @@
 }
 .order-take{
   position:absolute;
-  right:50rpx;
+  right:20rpx;
   margin-top:15rpx;
 
   width:100rpx;
@@ -263,6 +265,7 @@
   background:#FFF;
   padding-top:30rpx;
   padding-bottom:30rpx;
+  border:1rpx double #ededed;
 }
 .more-down{
   margin-top:40rpx;

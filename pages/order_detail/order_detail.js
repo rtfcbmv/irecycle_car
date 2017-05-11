@@ -1,11 +1,12 @@
 // pages/order_detail/order_detail.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    order_list: [{ "name": "景先生", "address": "南岗区西大直街91号", "phone": "110", "time": "2017/6/13/8:00", "remark": "无" }, { "name": "霍小姐", "address": "南岗区西大直街93号", "phone": "119", "time": "2017/6/13/15:00", "remark": "无" }, { "name": "奕大爷", "address": "南岗区西大直街94号", "phone": "120", "time": "2017/6/13/15:00", "remark": "少放辣" }],
+    order_list: [],
     orderid:0
   },
 
@@ -16,13 +17,25 @@ Page({
     })
   },
 
-
+  order_takeing: function () {
+    app.order_list[this.data.orderid].taken = 1
+    this.setData({
+      order_list: app.order_list
+    })
+    app.myorder_list.push(this.data.orderid)
+    //console.log(app.myorder_list)
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   onReady: function () {
   
   },
 
   onShow: function () {
-  
+    this.setData({
+      order_list: app.order_list
+    })
   },
 
   /**

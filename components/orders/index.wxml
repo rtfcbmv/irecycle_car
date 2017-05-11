@@ -9,18 +9,22 @@
 
 <scroll-view class="orders-panel" scroll-y>
   <block wx:for="{{order_list}}">
-  <navigator url="../order_detail/order_detail?index={{index}}">
-  <view class="orders-item">
-    <view class="name">{{item.name}}</view>
-    <view class="righttext">
-      <view class="address">{{item.address}}</view>
-      <view class="time">{{item.time}}</view>
-    </view>
-    <view class="order-take">
-    接单
-    </view>
+  <block wx:if="{{item.taken==0}}">
+  <view style="display: flex;flex-direction: row;">
+      <navigator url="../order_detail/order_detail?index={{index}}">
+      <view class="orders-item">
+        <view class="name">{{item.name}}</view>
+        <view class="righttext">
+          <view class="address">{{item.address}}</view>
+          <view class="time">{{item.time}}</view>
+        </view>
+      </view>
+      </navigator>
+      <view bindtap="order_takeing" data-index="{{index}}" class="order-take">
+        接单
+      </view>
   </view>
-  </navigator>
+  </block>
   </block>
 </scroll-view>
 
@@ -35,7 +39,7 @@
 <template name="orderdetail">
 <view class="detail-chief">
   <view class="title">
-    单号：175120{{orderid}}
+    单号：175120{{order_list[orderid].id}}
   </view>
   <view class="term">
     <view class="term-item">
@@ -62,7 +66,7 @@
 
 <view class="detail-remark">
 <view class="title">备注：</view>
-<text>{{order_list[orderid].remark}}</text>
+<text>无</text>
 </view>
 
 <view class="detail-image">
@@ -71,9 +75,11 @@
 </image>
 </view>
 
-<view class="ordertake-panel">
+<block wx:if="{{order_list[orderid].taken==0}}">
+<view bindtap="order_takeing" data-index="{{index}}" class="ordertake-panel">
 接单
 </view>
+</block>
 </template>
 
 
@@ -87,7 +93,7 @@
   </view>
 </view>
 
-<block wx:if="{{order_state==0}}">
+<block wx:if="{{order_state==0 && num>0}}">
 <view class="myorder_list">
     <block wx:for="{{myorder_list}}">
     <view bindtap="selectorder" data-index="{{index}}" class="orders-item">
@@ -101,7 +107,7 @@
     
     <block wx:if="{{select_order==index}}">
     <view class="operate-panel">
-      <navigator url="../order_detail/order_detail?index={{index}}">
+      <navigator url="../order_detail/order_detail?index={{item.id}}">
       <view class="item">查看详情</view>
       </navigator>
       <navigator url="../service/service?index={{index}}">

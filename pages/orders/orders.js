@@ -2,7 +2,7 @@
 function countdown(that) {
   if (that.data.count_down <= 0)
     that.setData({
-      count_down: 60
+      count_down: 60,
     })
   setTimeout(function () {
     that.setData({
@@ -12,20 +12,28 @@ function countdown(that) {
   }, 1000)
 }
 
-
+var app = getApp()
 Page({
   data: {
-    order_list: [{ "name": "景先生", "address": "南岗区西大直街91号", "phone": "110", "time": "2017/6/13/8:00" }, { "name": "霍小姐", "address": "南岗区西大直街93号", "phone": "119", "time": "2017/6/13/15:00" },{ "name": "奕大爷", "address": "南岗区西大直街94号", "phone": "120", "time": "2017/6/13/15:00" }],
+    order_list: [],
     num:0,
     count_down:60
   },
 
   refresh:function(){
     this.setData({
-      count_down: 60
+      count_down: 60,
     })
   },
+  order_takeing: function (e) {
+    app.order_list[e.currentTarget.dataset.index].taken=1
+    this.setData({
+      order_list: app.order_list
+    })
+    app.myorder_list.push(e.currentTarget.dataset.index)
+    //console.log(app.myorder_list)
 
+  },
   onLoad: function (options) {
     countdown(this)
   },
@@ -42,7 +50,8 @@ Page({
    */
   onShow: function () {
     this.setData({
-      num: this.data.order_list.length
+      num: this.data.order_list.length,
+      order_list: app.order_list
     })
   },
 
