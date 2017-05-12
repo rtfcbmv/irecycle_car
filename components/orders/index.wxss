@@ -41,6 +41,7 @@
   background:#FFF;
   display: flex;
   flex-direction: column;
+  padding-top:20rpx;
 }
 .orders-item{
   margin-left:5%;

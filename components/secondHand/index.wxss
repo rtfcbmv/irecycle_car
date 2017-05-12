@@ -1,0 +1,33 @@
+page{
+  background:#f9f9f9;
+}
+
+.trade-panel{
+  margin-top:200rpx;
+  width:100%;
+  text-align:center;
+}
+.trade-panel .title{
+
+}
+.content-panel{
+  margin-top:100rpx;
+  height:100rpx;
+  width:100%;
+  background:#FFF;
+}
+.content{
+  margin-left:100rpx;
+  border:1rpx solid #f9f9f9;
+  height:100rpx;
+  
+}
+.content input{
+  height:50rpx;
+  margin-top:25rpx;
+  line-height:50rpx;
+}
+.content .text{
+  font-size:40rpx;
+  color:blue;
+}

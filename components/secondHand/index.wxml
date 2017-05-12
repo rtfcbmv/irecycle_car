@@ -1,5 +1,12 @@
 <template name="secondHand">
-  <view >
-
+<!--<view class="trade-panel">
+  <view class="title">
+  登记完所有项目后，请点击提交
   </view>
+  <view class="content-panel">
+    <view class="content">
+    <input placeholder="请输入此单交易总金额" placeholder-class="text" ></input>
+    </view>
+  </view>
+</view>-->
 </template>
