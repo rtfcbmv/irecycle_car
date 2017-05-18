@@ -277,7 +277,7 @@
 }
 .operate-panel{
   height:100rpx;
-  width:100%;
+  width:99%;
   border-bottom:1rpx dashed #d4d4d4;
   padding:25rpx 0rpx 0rpx 300rpx;
   display: flex;

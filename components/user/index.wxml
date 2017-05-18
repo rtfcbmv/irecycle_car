@@ -8,7 +8,7 @@
             </view>
         </view>
         <view class="user-item">
-            <navigator url="../myorders/myorders">
+            <navigator url="../myorders/myorders" hover-class="none">
             <view class="item">
                 <image src="../../static/image/my_order.png"></image>
                 <view class="item-title">我的订单</view>

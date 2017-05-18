@@ -181,27 +181,26 @@ map {
   height: 60rpx;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  
+}
+.goods_right .goods_right_items.active .bottom-panel text {
+  margin:17rpx 0rpx 0rpx 50rpx;
+  height:40rpx;
+  font-size:30rpx;
+  line-height:40rpx;
+}
+.goods_right .goods_right_items.active .bottom-panel input {
+  margin:10rpx 0rpx 0rpx 10rpx;
+
+  height:40rpx;
+  border-bottom:1rpx solid #f8ca4f;
+  font-size:30rpx;
+  line-height:40rpx;
 }
 
-.goods_right .goods_right_items.active .bottom-panel .item {
-  border: 1rpx dotted #dadada;
-  height: 40rpx;
-  width: 120rpx;
-  margin-top: 20rpx;
-  margin-left: 30rpx;
-  font-size: 25rpx;
-  text-align: center;
-  line-height: 40rpx;
-}
-
-.goods_right .goods_right_items.active .bottom-panel .item.active {
-  border-radius: 15%;
-  border: 5rpx dotted #ff7c63;
-}
 
 
-/*basket*/
+/*basket*//*
 .basket-panel{
   display: flex;
   flex-direction: column;
@@ -339,4 +338,4 @@ map {
   margin-top:50rpx;
   background:#f8f8f8;
   height:85rpx;
-}
+}*/

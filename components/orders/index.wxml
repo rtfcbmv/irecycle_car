@@ -107,11 +107,11 @@
     
     <block wx:if="{{select_order==index}}">
     <view class="operate-panel">
-      <navigator url="../order_detail/order_detail?index={{item.id}}">
-      <view class="item">查看详情</view>
+      <navigator hover-class="none" url="../order_detail/order_detail?index={{item.id}}">
+      <view class="item" >查看详情</view>
       </navigator>
-      <navigator url="../service/service?index={{index}}">
-      <view class="item">登记处理</view>
+      <navigator hover-class="none" url="../service/service?index={{index}}">
+      <view class="item" >登记处理</view>
       </navigator>
     </view>
     </block>

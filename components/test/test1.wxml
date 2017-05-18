@@ -47,11 +47,8 @@
         </view>
         <block wx:if="{{index==selected_goods}}">
         <view class="bottom-panel">
-            <block wx:for="{{price_range}}" wx:for-item="weight_item" wx:for-index="weight_index">
-            <view bindtap="selectweight" data-weight_index="{{weight_index}}" data-index="{{index}}" class="item {{item.select==weight_index ? 'active' : ''}}">
-                {{weight_item}}
-            </view>
-            </block>   
+            <text>重量：</text>
+            <input placeholder="请输入重量（斤）"  value="{{item.weight}}" bindinput="inputweight" bindblur="submitweight" data-index="{{index}}"/>
         </view>
         </block>
     </view>
@@ -67,12 +64,14 @@
     </navigator>
 </template>
 
+<!--
 <template name="goods_cartoon">
     <view animation="{{animationData_goods}}" style="    position:fixed;left:{{left+20}}rpx;top:{{top+20}}rpx;height:50rpx;width:50rpx;">
         <image src="{{image}}" style="height:50rpx;width:60rpx"></image>
     </view>
 </template>
-
+            -->
+            <!--
 <template name="basket"> 
 
     <view class="com-operate">
@@ -145,3 +144,4 @@
         </view>
       </view>
 </template>
+ -->

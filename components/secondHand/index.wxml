@@ -1,12 +1,35 @@
 <template name="secondHand">
-<!--<view class="trade-panel">
+<view class="trade-panel">
   <view class="title">
-  登记完所有项目后，请点击提交
+  如实填写后，请点击提交！
   </view>
+
+
+  <form bindsubmit="formSubmit">
   <view class="content-panel">
     <view class="content">
-    <input placeholder="请输入此单交易总金额" placeholder-class="text" ></input>
+    <view class="point" style="background: #ff0033;"/>
+    <input name="amount" placeholder="请输入此单交易总金额" placeholder-class="text" value="" bindinput="submit_ask" ></input>
     </view>
+
+<!--    <view class="content">
+    <view class="point" style="background: #00ff00;"/>
+    <input name="what" placeholder="请输入点啥呢？" placeholder-class="text"   ></input>
+    </view>-->
   </view>
-</view>-->
+
+<block wx:if="{{prompt==1}}">
+  <button class="submit-button" formType="submit">
+  提交
+  </button>
+</block>
+<block wx:else>
+  <button class="submit-button" style="background:#DBDBDB	">
+  提交
+  </button>
+</block>
+  </form>
+</view>
+
 </template>
+

@@ -5,29 +5,55 @@ page{
 .trade-panel{
   margin-top:200rpx;
   width:100%;
-  text-align:center;
 }
 .trade-panel .title{
-
+  text-align:center;
+  color:#7D26CD;	
 }
 .content-panel{
   margin-top:100rpx;
-  height:100rpx;
+  
   width:100%;
   background:#FFF;
 }
 .content{
-  margin-left:100rpx;
-  border:1rpx solid #f9f9f9;
+  margin-left:50rpx;
+  border-bottom:5rpx solid #f9f9f9;
   height:100rpx;
+
+  display: flex;
+  flex-direction: row;
   
 }
+
+.content .point{
+  margin:45rpx 50rpx 0rpx 20rpx;
+
+  width:10rpx;
+  height:10rpx;
+  border-radius: 50%;
+}
+
 .content input{
   height:50rpx;
   margin-top:25rpx;
   line-height:50rpx;
 }
 .content .text{
-  font-size:40rpx;
-  color:blue;
+  font-size:33rpx;
+  color:#ff9933	;
+}
+
+
+.submit-button{
+  margin:100rpx 0rpx 0rpx 15%;
+
+  width:70%;
+  height:80rpx;
+  border-radius: 15rpx;
+  background:#66CDAA;
+
+  line-height:80rpx;
+  text-align:center;
+  color: #FFF;
 }

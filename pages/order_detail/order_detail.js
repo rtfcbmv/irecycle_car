@@ -1,10 +1,6 @@
 // pages/order_detail/order_detail.js
 var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     order_list: [],
     orderid:0

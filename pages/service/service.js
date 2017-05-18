@@ -2,20 +2,21 @@
 var get_function = require('../../components/test/test1.js')
 var secondHand = require('../../components/secondHand/index.js')
 var banjia = require('../../components/banjia/index.js')
-var app = getApp()
+
 Page({
   data: {
     service: 0,
     goods_type: [],
     goods: [],
-    price_range: ["0~10斤", "10~50斤", "50~100斤"],
+    goods_list: [],
     select:[],
     selected_type: 0,
     selected_goods: -1,
     image: "",
     Y_Dvalue:0,
     left:612,
-    top:870
+    top:870,
+    prompt:0
 
   },
   URL:'http://easy-mock.com/mock/59070ef87a878d73716e3aa7/wx-irecycle/',
@@ -27,7 +28,7 @@ Page({
     var that = this;
     this.setData({
       selected_type: e.target.dataset.index,
-      selected_goods: -1
+      selected_goods: -1,
     })
     //animationData_left_polish animation.height(60+'rpx').step()
     
@@ -64,8 +65,44 @@ Page({
       top:2*e.touches[0].clientY+20
     })
   },
+  
+  inputweight:function(e){
+    var copy = this.data.goods
+    copy[this.data.selected_type][this.data.selected_goods].weight = e.detail.value
+    if (e.detail.value!="")
+      copy[this.data.selected_type][this.data.selected_goods].select = 1
+    else
+      copy[this.data.selected_type][this.data.selected_goods].select = -1
+    this.setData({
+      goods: copy
+    })
+  },
+  submitweight:function(e){
+    var node=0
+    for (var i = 0; i < this.data.goods_list.length; i++) 
+    {
+      if (this.data.goods_list[i].type_id == this.data.selected_type && this.data.goods_list[i].goods_id == this.data.selected_goods) 
+      {
+        node=1
+        if (e.detail.value == "")
+          this.data.goods_list.splice(i, 1)
+        else
+          this.data.goods_list[i].weight = e.detail.value
+        break
+      }
+    }
+    if (node == 0 && e.detail.value != "")
+    {
+      var sub = { "type_id": -1, "goods_id": -1, "weight": "" }
+      sub.type_id = this.data.selected_type
+      sub.goods_id = this.data.selected_goods
+      sub.weight = e.detail.value
+      this.data.goods_list.push(sub)
+    }   
+  },
 
-  selectweight: function (e) {
+
+  /*selectweight: function (e) {
 
      var D_Value=87*e.target.dataset.index+130.5-e.changedTouches[0].clientY
      console.log(D_Value)
@@ -83,7 +120,7 @@ Page({
       sub.type_id = this.data.selected_type
       sub.goods_id = this.data.selected_goods
       sub.weight_id = e.target.dataset.weight_index
-      app.goods_list.push(sub)
+      this.data.goods_list.push(sub)
       //动画效果
       animation.translate(120 - this.data.left/2, 100 + e.target.dataset.index * 87 - this.data.top/2-D_Value).step({duration:20})
         animation.opacity(1).scale(3,3).step({duration:20})
@@ -92,11 +129,11 @@ Page({
     }
     else if (this.data.goods[this.data.selected_type][this.data.selected_goods].select == e.target.dataset.weight_index) {
       //回收车删除
-      for(var i=0;i<app.goods_list.length;i++)
+      for(var i=0;i<this.data.goods_list.length;i++)
       {
-       if (app.goods_list[i].type_id==this.data.selected_type && app.goods_list[i].goods_id==this.data.selected_goods)
+       if (this.data.goods_list[i].type_id==this.data.selected_type && this.data.goods_list[i].goods_id==this.data.selected_goods)
         {
-          app.goods_list.splice(i,1)
+          this.data.goods_list.splice(i,1)
           break
         }
       }
@@ -109,11 +146,11 @@ Page({
     }
     else {
       //回收车项更改
-      for(var i=0;i<app.goods_list.length;i++)
+      for(var i=0;i<this.data.goods_list.length;i++)
       {
-        if (app.goods_list[i].type_id==this.data.selected_type && app.goods_list[i].goods_id==this.data.selected_goods)
+        if (this.data.goods_list[i].type_id==this.data.selected_type && this.data.goods_list[i].goods_id==this.data.selected_goods)
         {
-          app.goods_list[i].weight_id = e.target.dataset.weight_index
+          this.data.goods_list[i].weight_id = e.target.dataset.weight_index
           break
         }
       }
@@ -130,11 +167,13 @@ Page({
     this.setData({
       goods: copy
     })
-  },
+  },*/
 
   change_service: function (e) {
     this.setData({
-      service: e.target.dataset.index
+      service: e.target.dataset.index,
+      selected_type: 0,
+      selected_goods: -1
     }) //animationData_progress  translateX(107*e.target.dataset.index)
     var animation = wx.createAnimation({
       duration: 1000,
@@ -148,13 +187,31 @@ Page({
     })
   },
 
+//交易记录界面
+  formSubmit: function (e) {
+    console.log(this.data.goods_list)
+    console.log(e.detail.value.amount)
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+  submit_ask: function (e) {
+    var sub=0
+    if (e.detail.value != "")
+      sub = 1
+    this.setData({
+        prompt: sub
+      })
+  },
+
+
   onLoad:function(){
     var that = this;
 
     wx.request({
       url: that.URL+'getgoods',
       data: {},
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      method: 'GET', 
       // header: {}, // 设置请求的 header
       success: function(res){
         // success
@@ -164,12 +221,7 @@ Page({
           goods:res.data.data.goods
         })
       },
-      fail: function(res) {
-        // fail
-      },
-      complete: function(res) {
-        // complete
-      }
+      
     })
   },
   onReady: function () {
