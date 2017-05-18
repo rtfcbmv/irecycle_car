@@ -10,7 +10,7 @@
   ],
   "window":{
     "backgroundTextStyle":"dark",
-    "navigationBarBackgroundColor": "#FAC328",
+    "navigationBarBackgroundColor": "#00B38C",
     "navigationBarTitleText": "我来收（回收车端）",
     "navigationBarTextStyle":"white",
     "enablePullDownRefresh":"true"

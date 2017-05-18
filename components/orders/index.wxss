@@ -104,7 +104,14 @@
   color:#836FFF;
 }
 
-
+.del-node{
+  margin-top:10rpx;
+  position:absolute;
+  right:20%;
+  width:100rpx;
+  height:100rpx;
+  z-index:initial;
+}
 
 
 /*orderdetail页*/

@@ -103,6 +103,11 @@
         <view class="time">{{item.time}}</view>
       </view>
       <image src="../../static/image/more_{{select_order==index?'up':'down'}}.png" class="more-down"></image>
+
+      <block wx:if="{{item.state==3}}">
+      <image class="del-node" src="../../static/image/handle.png"></image>
+      </block>
+
     </view>
     
     <block wx:if="{{select_order==index}}">
@@ -110,9 +115,14 @@
       <navigator hover-class="none" url="../order_detail/order_detail?index={{item.id}}">
       <view class="item" >查看详情</view>
       </navigator>
+      <block wx:if="{{item.state==3}}">
+      <view bindtap="cancelOrder" class="item" style="background:#EE4000" >确认取消</view>
+      </block>
+      <block wx:else>
       <navigator hover-class="none" url="../service/service?index={{index}}">
       <view class="item" >登记处理</view>
       </navigator>
+      </block>
     </view>
     </block>
     </block>
