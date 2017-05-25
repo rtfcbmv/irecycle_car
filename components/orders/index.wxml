@@ -9,22 +9,20 @@
 
 <scroll-view class="orders-panel" scroll-y>
   <block wx:for="{{order_list}}">
-  <block wx:if="{{item.taken==0}}">
   <view style="display: flex;flex-direction: row;">
-      <navigator url="../order_detail/order_detail?index={{index}}">
-      <view class="orders-item">
+      
+      <view class="orders-item" bindtap="gotoDetail" data-index="{{index}}">
         <view class="name">{{item.name}}</view>
         <view class="righttext">
-          <view class="address">{{item.address}}</view>
+          <view class="address">{{item.address}} {{item.addressdetail}}</view>
           <view class="time">{{item.time}}</view>
         </view>
       </view>
-      </navigator>
+
       <view bindtap="order_takeing" data-index="{{index}}" class="order-take">
         接单
       </view>
   </view>
-  </block>
   </block>
 </scroll-view>
 
@@ -39,25 +37,25 @@
 <template name="orderdetail">
 <view class="detail-chief">
   <view class="title">
-    单号：175120{{order_list[orderid].id}}
+    单号：{{order.id}}
   </view>
   <view class="term">
     <view class="term-item">
       <image src="../../static/image/name.png" class="image"></image>
-      <text>{{order_list[orderid].name}}</text>
+      <text>{{order.name}}</text>
     </view>
     <view class="term-item">
       <image src="../../static/image/time.png" class="image"></image>
-      <text>{{order_list[orderid].time}}</text>
+      <text>{{order.time}}</text>
     </view>
     <view class="term-item">
       <image src="../../static/image/phone.png" class="image"></image>
-      <text>{{order_list[orderid].phone}}</text>
+      <text>{{order.phone}}</text>
     </view>
     <navigator url="../index/index">
     <view class="term-item" style="border-bottom:#FFF">
       <image src="../../static/image/address.png" class="image"></image>
-      <text>{{order_list[orderid].address}}</text>
+      <text>{{order.address}}</text>
       <image src="../../static/image/more.png" class="more-right"></image>
     </view>
     </navigator>
@@ -66,17 +64,17 @@
 
 <view class="detail-remark">
 <view class="title">备注：</view>
-<text>无</text>
+<text>{{order.text}}</text>
 </view>
 
 <view class="detail-image">
 <view class="title">照片：</view>
-<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494500571320&di=94cee9054af601f56022cd315a0415f7&imgtype=0&src=http%3A%2F%2Fs15.sinaimg.cn%2Fmiddle%2F44d869bbg79642aa2119e%26690">
+<image src="{{order.imgUrl}}">
 </image>
 </view>
 
-<block wx:if="{{order_list[orderid].taken==0}}">
-<view bindtap="order_takeing" data-index="{{index}}" class="ordertake-panel">
+<block wx:if="order.state==2">
+<view bindtap="order_takeing" class="ordertake-panel">
 接单
 </view>
 </block>
@@ -93,7 +91,41 @@
   </view>
 </view>
 
-<block wx:if="{{order_state==0 && num>0}}">
+<block wx:if="{{order_state==0 && numOne>0}}">
+<view class="myorder_list">
+    <block wx:for="{{myorder_list}}">
+    <view bindtap="selectorder" data-index="{{index}}" class="orders-item">
+      <view class="name">{{item.name}}</view>
+      <view class="righttext">
+        <view class="address">{{item.address}} {{item.state}}</view>
+        <view class="time">{{item.time}}</view>
+      </view>
+      <image src="../../static/image/more_{{select_order==index?'up':'down'}}.png" class="more-down"></image>
+
+      <block wx:if="{{item.state==4}}">
+      <image class="del-node" src="../../static/image/handle.png"></image>
+      </block>
+
+    </view>
+    
+    <block wx:if="{{select_order==index}}">
+    <view class="operate-panel" >
+      <view class="item" bindtap="gotoDetail">查看详情</view>
+      <block wx:if="{{item.state==4}}">
+      <view bindtap="orderCancel" class="item" style="background:#EE4000" >确认取消</view>
+      </block>
+      <block wx:else>
+      <navigator hover-class="none" url="../service/service?index={{item.id}}">
+      <view class="item" >登记处理</view>
+      </navigator>
+      </block>
+    </view>
+    </block>
+    </block>
+</view>
+</block>
+<block wx:elif="{{order_state==1 && numTwo>0}}">
+
 <view class="myorder_list">
     <block wx:for="{{myorder_list}}">
     <view bindtap="selectorder" data-index="{{index}}" class="orders-item">
@@ -102,31 +134,11 @@
         <view class="address">{{item.address}}</view>
         <view class="time">{{item.time}}</view>
       </view>
-      <image src="../../static/image/more_{{select_order==index?'up':'down'}}.png" class="more-down"></image>
-
-      <block wx:if="{{item.state==3}}">
-      <image class="del-node" src="../../static/image/handle.png"></image>
-      </block>
 
     </view>
-    
-    <block wx:if="{{select_order==index}}">
-    <view class="operate-panel">
-      <navigator hover-class="none" url="../order_detail/order_detail?index={{item.id}}">
-      <view class="item" >查看详情</view>
-      </navigator>
-      <block wx:if="{{item.state==3}}">
-      <view bindtap="cancelOrder" class="item" style="background:#EE4000" >确认取消</view>
-      </block>
-      <block wx:else>
-      <navigator hover-class="none" url="../service/service?index={{index}}">
-      <view class="item" >登记处理</view>
-      </navigator>
-      </block>
-    </view>
-    </block>
     </block>
 </view>
+
 </block>
 <block wx:else>
 <view class="empty-list">暂时还没有订单~</view>

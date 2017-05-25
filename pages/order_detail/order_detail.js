@@ -1,25 +1,35 @@
 // pages/order_detail/order_detail.js
-var app = getApp()
+
 Page({
   data: {
-    order_list: [],
-    orderid:0
+    order:{}
   },
 
 
-  onLoad: function (options) {
-    this.setData({
-      orderid: options.index
+  onLoad: function () {
+    var that = this
+    wx.getStorage({
+      key: 'orderdetail',
+      success: function (res) {
+        that.setData({
+          order: res.data
+        })
+      },
+      fail: function (res) { },
+      complete: function (res) { },
     })
   },
 
   order_takeing: function () {
-    app.order_list[this.data.orderid].taken = 1
-    this.setData({
-      order_list: app.order_list
+    var that = this;
+    wx.request({
+      url: "https://irecycle.gxxnr.cn/api/car/ordertaken.do",
+      data: {
+        driverid: 1,
+        orderid: that.data.order.id
+      },
+      method: 'GET',
     })
-    app.myorder_list.push(this.data.orderid)
-    //console.log(app.myorder_list)
     wx.navigateBack({
       delta: 1
     })
@@ -29,9 +39,7 @@ Page({
   },
 
   onShow: function () {
-    this.setData({
-      order_list: app.order_list
-    })
+
   },
 
   /**

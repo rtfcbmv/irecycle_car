@@ -5,6 +5,7 @@ var banjia = require('../../components/banjia/index.js')
 
 Page({
   data: {
+    orderid:-1,
     service: 0,
     goods_type: [],
     goods: [],
@@ -17,7 +18,6 @@ Page({
     left:612,
     top:870,
     prompt:0
-
   },
   URL:'http://easy-mock.com/mock/59070ef87a878d73716e3aa7/wx-irecycle/',
   banjia_makePhoneCall:banjia.makePhoneCall,
@@ -205,9 +205,12 @@ Page({
   },
 
 
-  onLoad:function(){
+  onLoad:function(options){
+    console.log(options)
+    /*this.setData({
+      orderid:options.index
+    })*/
     var that = this;
-
     wx.request({
       url: that.URL+'getgoods',
       data: {},

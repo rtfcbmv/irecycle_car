@@ -1,5 +1,5 @@
 // pages/orders/orders.js
-function countdown(that) {
+function countdown(that){
   if (that.data.count_down <= 0)
     that.setData({
       count_down: 60,
@@ -19,49 +19,93 @@ Page({
     num:0,
     count_down:60
   },
-
+  URL: 'https://irecycle.gxxnr.cn/api/car/',
   refresh:function(){
     this.setData({
       count_down: 60,
     })
+    var that = this;
+    wx.request({
+      url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
+      data: {
+        driverid:1
+      },
+      method: 'GET',
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+
+        that.setData({
+          order_list: res.data,
+          num: res.data.length
+        })
+        console.log(that.data.order_list)
+      },
+    })
   },
   order_takeing: function (e) {
-    app.order_list[e.currentTarget.dataset.index].taken=1
-    this.setData({
-      order_list: app.order_list,
-      num:this.data.num-1
+    var that = this;
+    wx.request({
+      url: "https://irecycle.gxxnr.cn/api/car/ordertaken.do",
+      data: {
+        driverid:1,
+        orderid: that.data.order_list[e.target.dataset.index].id
+      },
+      method: 'GET',
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        wx.request({
+          url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
+          data: {
+            driverid:1
+          },
+          method: 'GET',
+          // header: {}, // 设置请求的 header
+          success: function (res) {
+            that.setData({
+              order_list: res.data,
+              num: res.data.length
+            })
+            console.log(that.data.order_list)
+          },
+        })
+      },
     })
-    app.myorder_list.push(e.currentTarget.dataset.index)
-    //console.log(app.myorder_list)
-
   },
-  onLoad: function (options) {
-    this.setData({
-      order_list: app.order_list
+
+  gotoDetail: function (e) {
+    wx.setStorage({
+      key: 'orderdetail',
+      data: this.data.order_list[e.currentTarget.dataset.index],
+      success: function () {
+        wx.navigateTo({
+          url: '../order_detail/order_detail',
+        })
+      }
     })
+  },
+
+
+  onLoad: function (options) {
     countdown(this)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
-
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-    var sum=0
-    for (var i = 0; i < app.order_list.length;i++)
-    {
-      if (app.order_list[i].taken==0)
-        sum++
-    }
-    this.setData({
-      order_list: app.order_list,
-      num: sum
+    var that = this;
+    wx.request({
+      url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
+      data: {
+        driverid :1
+      },
+      method: 'GET',
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        that.setData({
+          order_list: res.data,
+          num: res.data.length
+        })
+      },
     })
   },
 
