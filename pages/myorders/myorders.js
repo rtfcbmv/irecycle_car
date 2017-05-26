@@ -133,6 +133,28 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    var that = this;
+    wx.request({
+      url: "https://irecycle.gxxnr.cn/api/car/getmyorderlist.do",
+      data: {
+        driverid: 1
+      },
+      method: 'GET',
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        console.log(res)
+        var num = 0
+        for (var i = 0; i < res.data.length; i++) {
+          if (res.data.state == 6)
+            num++
+        }
+        that.setData({
+          myorder_list: res.data,
+          numOne: res.data.length - num,
+          numTwo: num
+        })
+        wx.stopPullDownRefresh()
+      },
+    })
   }
 })

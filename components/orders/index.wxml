@@ -109,7 +109,7 @@
 
     </view>
     
-    <block wx:if="{{select_order==index}}">
+    <block wx:if="{{select_order==index && item.state!=1}}">
     <view class="operate-panel" >
       <view class="item" bindtap="gotoDetail">查看详情</view>
       <block wx:if="{{item.state==4}}">
