@@ -69,7 +69,7 @@
 
 <view class="detail-image">
 <view class="title">照片：</view>
-<image src="{{order.imgUrl}}">
+<image src="https://irecycle.gxxnr.cn{{order.imgUrl}}">
 </image>
 </view>
 
