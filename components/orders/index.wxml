@@ -94,17 +94,18 @@
 <block wx:if="{{order_state==0 && numOne>0}}">
 <view class="myorder_list">
     <block wx:for="{{myorder_list}}">
-    <view bindtap="selectorder" data-index="{{index}}" class="orders-item">
+    <view bindtap="{{item.state==1?'':'selectorder'}}" data-index="{{index}}" class="orders-item {{item.state==1?'invalid':''}}">
       <view class="name">{{item.name}}</view>
       <view class="righttext">
-        <view class="address">{{item.address}} {{item.state}}</view>
+        <view class="address">{{item.address}}{{item.addressdetail}}</view>
         <view class="time">{{item.time}}</view>
       </view>
-      <image src="../../static/image/more_{{select_order==index?'up':'down'}}.png" class="more-down"></image>
+      <image wx:if="{{item.state!=1}}" src="../../static/image/more_{{select_order==index?'up':'down'}}.png" class="more-down"></image>
 
-      <block wx:if="{{item.state==4}}">
-      <image class="del-node" src="../../static/image/handle.png"></image>
-      </block>
+      <image wx:if="{{item.state==1}}" class="del-node" src="../../static/image/forbidden.png"></image>
+      <image wx:if="{{item.state==3}}" class="del-node" src="../../static/image/truck.png"></image>
+      <image wx:if="{{item.state==4}}" class="del-node" src="../../static/image/tip.png"></image>
+
 
     </view>
     

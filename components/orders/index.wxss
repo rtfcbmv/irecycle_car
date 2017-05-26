@@ -53,6 +53,10 @@
   display: flex;
   flex-direction: row;
 }
+.orders-item.invalid{
+  color:#C4C4C4 !important;
+  
+}
 .orders-item .name{
   margin-left:20rpx;
   height:100rpx;
@@ -105,11 +109,11 @@
 }
 
 .del-node{
-  margin-top:10rpx;
+  margin-top:15rpx;
   position:absolute;
   right:20%;
-  width:100rpx;
-  height:100rpx;
+  width:70rpx;
+  height:70rpx;
   z-index:initial;
 }
 
