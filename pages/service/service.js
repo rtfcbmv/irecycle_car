@@ -93,9 +93,8 @@ Page({
     }
     if (node == 0 && e.detail.value != "")
     {
-      var sub = { "type_id": -1, "goods_id": -1, "weight": "" }
-      sub.type_id = this.data.selected_type
-      sub.goods_id = this.data.selected_goods
+      var sub = { "id": -1,"weight": "" }
+      sub.id = this.data.goods[this.data.selected_type][this.data.selected_goods].id  
       sub.weight = e.detail.value
       this.data.goods_list.push(sub)
     }   
@@ -191,6 +190,17 @@ Page({
   formSubmit: function (e) {
     console.log(this.data.goods_list)
     console.log(e.detail.value.amount)
+    /*wx.request({
+      url: "https://irecycle.gxxnr.cn/api/car/.do",
+      data: {
+        
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log(res)
+      },
+    })*/
+
     wx.navigateBack({
       delta: 1
     })

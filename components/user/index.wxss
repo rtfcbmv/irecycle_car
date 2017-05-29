@@ -56,3 +56,44 @@ page{
     flex-grow: 4;
     margin-left: 40rpx;
 }
+
+
+/*register页面*/
+.info-panel{
+    margin:100rpx 20rpx 0rpx 120rpx;
+    
+    display:flex;
+    flex-direction:column;
+    position:relative;
+}
+.info-panel .info-item{
+
+    height:100rpx;
+
+    display:flex;
+    flex-direction:row;
+    
+    line-height:100rpx;
+}
+.info-panel .info-item text{
+    
+    font-size:35rpx; 
+}
+.info-panel .info-item input{
+    position:absolute;
+    left:200rpx;
+
+    margin-top:25rpx;
+    font-size:30rpx; 
+    border-bottom:1rpx solid #cccccc;
+}
+.submit-buttun{
+    margin-top:40rpx;
+    width:60%;
+    height:80rpx;
+    align-items:center;
+    border-radius: 25rpx;
+    background:#43CD80;
+    color:#fff;
+    line-height:80rpx;
+}

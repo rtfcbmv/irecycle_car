@@ -21,3 +21,31 @@
         </view>
     </view>
 </template>
+
+
+<template name="info">
+<form bindsubmit="formSubmit">
+<view class="info-panel">
+
+  <view class="info-item">
+    <text>联系电话</text>
+    <input name="phone" placeholder="请输入联系电话" value=""></input>
+  </view>
+
+  
+  <view class="info-item">
+    <text>密钥</text>
+    <input name="passwd" type="password" placeholder="请输入密钥" value="" bindinput="passwd" ></input>
+  </view>
+</view>
+
+<block wx:if="{{confirm==1}}">
+<button class="submit-buttun" formType="submit">提交</button>
+</block>
+<block wx:else>
+<button class="submit-buttun" style="background:#cccccc">提交</button>
+</block>
+</form>
+
+</template>
+

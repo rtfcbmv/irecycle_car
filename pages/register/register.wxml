@@ -1,0 +1,3 @@
+<!--pages/register/register.wxml-->
+<import src="../../components/user/index.wxml"></import>
+<template is="info" data="{{confirm:confirm}}"></template>
