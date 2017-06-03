@@ -1,4 +1,5 @@
 // pages/register/register.js
+var app = getApp()
 Page({
 
   data: {
@@ -14,20 +15,27 @@ Page({
     })
   },
   formSubmit:function(res){
-    /*wx.request({
-      url: "https://irecycle.gxxnr.cn/api/car/",
+    wx.request({
+      url: "https://irecycle.gxxnr.cn/api/car/register.do",
       data: {
-        tel: res.detail.value.phone,
-        passwd: res.detail.value.passwd
+        phone: res.detail.value.phone,
+        driverid: res.detail.value.driverid,
+        password: res.detail.value.passwd,
+        username: res.detail.value.name,
+        openid: app.globalData.openid
       },
-      method: 'GET',
-      // header: {}, // 设置请求的 header
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
+      method: 'POST',
       success: function (res) {
-        wx.navigateTo({
+        console.log(res)
+        app.globalData.userid = res.data.driverid
+        wx.reLaunch({
           url: '../orders/orders',
         })
       },
-    })*/
+    })
   },
   onLoad: function (options) {
   

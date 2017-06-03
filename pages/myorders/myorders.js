@@ -1,5 +1,5 @@
 // pages/myorders/myorders.js
-
+var app = getApp()
 Page({
 
   data: {
@@ -45,7 +45,7 @@ Page({
         wx.request({
           url: "https://irecycle.gxxnr.cn/api/car/getmyorderlist.do",
           data: {
-            driverid: 1
+            driverid: app.globalData.userid
           },
           method: 'GET',
           success: function (res) {
@@ -70,7 +70,7 @@ Page({
     wx.request({
       url: "https://irecycle.gxxnr.cn/api/car/getmyorderlist.do",
       data: {
-        driverid:1
+        driverid: app.globalData.userid
       },
       method: 'GET',
       // header: {}, // 设置请求的 header
@@ -137,7 +137,7 @@ Page({
     wx.request({
       url: "https://irecycle.gxxnr.cn/api/car/getmyorderlist.do",
       data: {
-        driverid: 1
+        driverid: app.globalData.userid
       },
       method: 'GET',
       // header: {}, // 设置请求的 header

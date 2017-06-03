@@ -28,16 +28,16 @@
 </view>
 
 <view class="goods_right" >
-    <block wx:for="{{goods[selected_type]}}">
+    <block wx:for="{{goods[selected_type].goodsList}}">
     <view class="goods_right_items {{selected_goods == index ? 'active' : ''}}">
         <view class="top_panel">
-            <image src="{{item.imgUrl}}" class="goods_image"></image>
+            <image src="{{item.pictureURL?'https://irecycle.gxxnr.cn/front/'+item.pictureURL: '../../static/image/empty.png'}}" class="goods_image"></image>
             <view class="righttext">
-                <text class="name">{{item.name}}</text>
-                <text class="price">{{item.price}}</text>
+                <text class="name">{{item.goodsName}}</text>
+                <text class="price">{{item.externalPrice}}</text>
             </view>
             <view bindtap="selectgoods" data-index="{{index}}">
-            <block wx:if="{{item.select<0}}">
+            <block wx:if="{{item.select>0}}">
                 <image  src="../../static/image/add.png" class="addbutton"></image>
             </block>
             <block wx:else>

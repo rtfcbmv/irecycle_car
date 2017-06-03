@@ -28,15 +28,26 @@
 <view class="info-panel">
 
   <view class="info-item">
+    <text>密钥</text>
+    <input name="driverid" type="password" placeholder="请输入密钥" value="" bindinput="passwd" ></input>
+  </view>
+
+
+  <view class="info-item">
+    <text>用户名</text>
+    <input name="name" placeholder="请输入用户名" value=""></input>
+  </view>
+
+  <view class="info-item">
     <text>联系电话</text>
     <input name="phone" placeholder="请输入联系电话" value=""></input>
   </view>
 
-  
   <view class="info-item">
-    <text>密钥</text>
-    <input name="passwd" type="password" placeholder="请输入密钥" value="" bindinput="passwd" ></input>
+    <text>密码</text>
+    <input name="passwd" type="password" placeholder="请输入pc端密码" value="" bindinput="passwd" ></input>
   </view>
+  
 </view>
 
 <block wx:if="{{confirm==1}}">

@@ -222,16 +222,21 @@ Page({
     })*/
     var that = this;
     wx.request({
-      url: that.URL+'getgoods',
+      url: 'https://irecycle.gxxnr.cn/goods/getgoods.do',
       data: {},
       method: 'GET', 
       // header: {}, // 设置请求的 header
       success: function(res){
         // success
-        console.log(res.data);
+        console.log(res)
+        var goods_type =[]
+        for (var i =0;i < res.data.goodsTypeList.length;i++)
+        {
+          goods_type.push(res.data.goodsTypeList[i].typeName)
+        }
         that.setData({
-          goods_type:res.data.data.goodsType,
-          goods:res.data.data.goods
+          goods_type:goods_type,
+          goods:res.data.goodsTypeList
         })
       },
       
