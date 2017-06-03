@@ -68,16 +68,20 @@
   display: flex;
   flex-direction: column;
 
-  width:400rpx;
+  width:350rpx;
 
   font-size:30rpx;
   line-height:50rpx;
 }
 .orders-item .righttext .address{
-  
+  width:350rpx;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
 }
 .orders-item .righttext .time{
-  
+  width:350rpx;
+  text-overflow:ellipsis;
 }
 .order-take{
   position:absolute;

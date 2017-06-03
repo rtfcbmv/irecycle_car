@@ -13,7 +13,6 @@ page{
     background: #fff;
     display: flex;
     justify-content: space-between;
-    border-bottom:1rpx solid #cccccc;
 }
 .user-info image{
     width: 150rpx;
@@ -46,8 +45,7 @@ page{
     color: rgb(95,95,95);
     display: flex;
     justify-content: space-between;
-    border-top:1rpx solid #cccccc;
-    border-bottom:1rpx solid #cccccc;
+   
 }
 .item image{
     width: 70rpx;
