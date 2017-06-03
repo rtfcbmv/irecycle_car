@@ -44,7 +44,7 @@ App({
                  //设置是否初始用户 
                  if (res.data)
                  {
-                   wx.navigateTo({
+                   wx.reLaunch({
                      url: '../register/register',
                    })
                  }
