@@ -1,2 +1,2 @@
 <import src="../../components/user/index.wxml"></import>
-<template is="user"></template>
+<template is="user" data="{{info:info,num:num}}"></template>

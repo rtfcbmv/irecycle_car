@@ -115,8 +115,8 @@ Page({
               wx.reLaunch({
                 url: '../register/register',
               })
-            }
-            else {
+          }
+          else {
               app.globalData.userid = res.data.data.driverid
               wx.request({
                 url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
@@ -134,7 +134,7 @@ Page({
                   })
                 },
               })
-            }
+          }
           }
         })
         

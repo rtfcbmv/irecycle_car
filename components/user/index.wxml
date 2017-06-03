@@ -1,10 +1,10 @@
 <template name="user">
     <view class="user">
         <view class="user-info">
-            <image src="../../static/tempImage/user.png"></image>
+            <image src="{{info.avatarUrl}}"></image>
             <view class="user-info-detail">
-                <view class="user-name">铁柱</view>
-                <view class="user-more">工作人员编号：007</view>
+                <view class="user-name">{{info.nickName}}</view>
+                <view class="user-more">工作人员编号：{{num}}</view>
             </view>
         </view>
         <view class="user-item">

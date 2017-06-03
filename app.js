@@ -6,7 +6,8 @@ App({
     encryptedData:null,
     iv:null,
     openid:"",
-    userid:-1
+    userid:-1,
+    info:{}
   },
 
   onLaunch: function() { 
