@@ -1,11 +1,12 @@
 {
   "pages":[
+
     "pages/orders/orders",
     "pages/register/register",    
     "pages/myorders/myorders",
     "pages/service/service",
     "pages/index/index",
-    "pages/basket/basket",
+    "pages/evaluate/evaluate",
     "pages/order_detail/order_detail",
     "pages/user/user"
   ],

@@ -1,0 +1,3 @@
+<!--pages/evaluate/evaluate.wxml-->
+<import src="../../components/evaluate/index.wxml"></import>
+<template is="evaluate" data="{{time:time,service_grade:service_grade,praise:praise,software_grade:software_grade}}"></template>

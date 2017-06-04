@@ -37,7 +37,7 @@
                 <text class="price">{{item.externalPrice}}</text>
             </view>
             <view bindtap="selectgoods" data-index="{{index}}">
-            <block wx:if="{{item.select>0}}">
+            <block wx:if="{{item.select<0}}">
                 <image  src="../../static/image/add.png" class="addbutton"></image>
             </block>
             <block wx:else>
@@ -48,7 +48,7 @@
         <block wx:if="{{index==selected_goods}}">
         <view class="bottom-panel">
             <text>重量：</text>
-            <input placeholder="请输入重量（斤）" placeholder-style="color:#cccccc;" value="{{item.weight}}" bindinput="inputweight" bindblur="submitweight" data-index="{{index}}"/>
+            <input placeholder="请输入重量（斤）"  type="number" placeholder-style="color:#cccccc;" value="{{item.weight}}" bindinput="inputweight" bindblur="submitweight" data-index="{{index}}" data-id="{{item.id}}"/>
         </view>
         </block>
     </view>

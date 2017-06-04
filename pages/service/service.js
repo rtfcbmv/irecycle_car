@@ -2,7 +2,7 @@
 var get_function = require('../../components/test/test1.js')
 var secondHand = require('../../components/secondHand/index.js')
 var banjia = require('../../components/banjia/index.js')
-
+var app = getApp()
 Page({
   data: {
     orderid:-1,
@@ -68,36 +68,46 @@ Page({
   
   inputweight:function(e){
     var copy = this.data.goods
-    copy[this.data.selected_type][this.data.selected_goods].weight = e.detail.value
+    copy[this.data.selected_type].goodsList[this.data.selected_goods].weight = e.detail.value
     if (e.detail.value!="")
-      copy[this.data.selected_type][this.data.selected_goods].select = 1
+      copy[this.data.selected_type].goodsList[this.data.selected_goods].select = 1
     else
-      copy[this.data.selected_type][this.data.selected_goods].select = -1
+      copy[this.data.selected_type].goodsList[this.data.selected_goods].select = -1
     this.setData({
       goods: copy
     })
-  },
-  submitweight:function(e){
-    var node=0
-    for (var i = 0; i < this.data.goods_list.length; i++) 
-    {
-      if (this.data.goods_list[i].type_id == this.data.selected_type && this.data.goods_list[i].goods_id == this.data.selected_goods) 
-      {
-        node=1
+
+
+    var node = 0
+    console.log(e)
+    for (var i = 0; i < this.data.goods_list.length; i++) {
+      if (this.data.goods_list[i].id == e.target.dataset.id) {
+        node = 1
         if (e.detail.value == "")
           this.data.goods_list.splice(i, 1)
         else
-          this.data.goods_list[i].weight = e.detail.value
+          this.data.goods_list[i].num = e.detail.value
+        this.setData({
+          goods_list: this.data.goods_list
+        })
         break
       }
     }
-    if (node == 0 && e.detail.value != "")
-    {
-      var sub = { "id": -1,"weight": "" }
-      sub.id = this.data.goods[this.data.selected_type][this.data.selected_goods].id  
-      sub.weight = e.detail.value
+    if (node == 0 && e.detail.value != "") {
+      var sub = { "id": -1, "num": "", "name": "" }
+      sub.id = this.data.goods[this.data.selected_type].goodsList[this.data.selected_goods].id
+      sub.num = e.detail.value
+      sub.name = this.data.goods[this.data.selected_type].goodsList[this.data.selected_goods].goodsName
       this.data.goods_list.push(sub)
-    }   
+      this.setData({
+        goods_list: this.data.goods_list
+      })
+      
+    }
+    console.log(this.data.goods_list)
+  },
+  submitweight:function(e){
+    
   },
 
 
@@ -188,23 +198,44 @@ Page({
 
 //交易记录界面
   formSubmit: function (e) {
-    console.log(this.data.goods_list)
-    console.log(e.detail.value.amount)
-    /*wx.request({
-      url: "https://irecycle.gxxnr.cn/api/car/.do",
+
+    var postdata = {}
+    postdata.orderid = this.data.orderid
+    postdata.goods = this.data.goods_list
+    console.log(postdata)
+    wx.request({
+      url: "https://irecycle.gxxnr.cn/api/car/finishorder.do",
       data: {
-        
+        reqdata: postdata
       },
-      method: 'GET',
+      header: {
+        'content-type': 'application/json;charset=utf-8'
+      },
+      method: 'POST',
       success: function (res) {
         console.log(res)
-      },
-    })*/
+        setTimeout(function () {
+          wx.hideLoading()
+          wx.showToast({
+            title: '登记成功',
+            duration: 1000,
+            icon: "success"
+          })
+        }, 500)
 
-    wx.navigateBack({
-      delta: 1
+        wx.navigateBack({
+          delta: 1
+        })
+      },
+      complete: function () {
+        wx.showLoading({
+          title: '登记中',
+        })
+      }
     })
   },
+
+
   submit_ask: function (e) {
     var sub=0
     if (e.detail.value != "")
@@ -217,9 +248,9 @@ Page({
 
   onLoad:function(options){
     console.log(options)
-    /*this.setData({
+    this.setData({
       orderid:options.index
-    })*/
+    })
     var that = this;
     wx.request({
       url: 'https://irecycle.gxxnr.cn/goods/getgoods.do',
@@ -233,6 +264,15 @@ Page({
         for (var i =0;i < res.data.goodsTypeList.length;i++)
         {
           goods_type.push(res.data.goodsTypeList[i].typeName)
+        }
+        //添加select字段
+        for (var i = 0; i < res.data.goodsTypeList.length; i++)
+        {
+          for (var j = 0; j < res.data.goodsTypeList[i].goodsList.length;j++)
+          {
+            res.data.goodsTypeList[i].goodsList[j].select=-1
+            res.data.goodsTypeList[i].goodsList[j].weight=''
+          }
         }
         that.setData({
           goods_type:goods_type,

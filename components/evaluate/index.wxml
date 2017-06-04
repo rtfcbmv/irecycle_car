@@ -1,0 +1,86 @@
+<template name="evaluate">
+<view class="grade-panel">
+  <view class="up-panel">
+    <image src="../../static/image/truck.png"></image>
+    <view class="righttext">
+      <text style="font-size:35rpx;">回收车收货</text>
+      <view class="delivertime">
+        <text style="font-size:30rpx;">到达时间 {{time}}</text>
+        <picker class="picker" mode="time" value="{{time}}" bindchange="timechange">
+        <view style="  display: flex;flex-direction: row;">
+          <view class="tip">? </view>
+          <text style="font-size:30rpx;color:#ABABAB;">时间不准</text>
+        </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="bottom-panel">
+    <text style="color:#ABABAB;font-size:30rpx;margin:10rpx 20rpx 0rpx 0rpx">服务质量</text>
+    <block wx:for="{{[1,2,3,4,5]}}">
+      <block wx:if="{{index<service_grade}}">
+      <view bindtap="service_grade" data-index="{{item}}">
+      <image src="../../static/image/star_taken.png"></image>
+      </view>
+      </block>
+      <block wx:else>
+      <view bindtap="service_grade" data-index="{{item}}">
+      <image src="../../static/image/star.png"></image>
+      </view>
+      </block>
+    </block>
+  </view>
+  <view class="bottom-panel" style="margin-top:20rpx;">
+    <text style="color:#ABABAB;font-size:30rpx;margin:10rpx 20rpx 0rpx 0rpx">软件体验</text>
+    <block wx:for="{{[1,2,3,4,5]}}">
+      <block wx:if="{{index<software_grade}}">
+      <view bindtap="software_grade" data-index="{{item}}">
+      <image src="../../static/image/star_taken.png"></image>
+      </view>
+      </block>
+      <block wx:else>
+      <view bindtap="software_grade" data-index="{{item}}">
+      <image src="../../static/image/star.png"></image>
+      </view>
+      </block>
+    </block>
+  </view>
+</view>
+
+<form bindsubmit="formSubmit">
+<view class="evaluate-panel">
+  <view class="praise-panel">
+    <view class="praise-zone">
+      <block wx:if="{{praise!=0}}">
+      <view class="praise-button" bindtap="praise" data-index="0">
+        <image src="../../static/image/thumb_up.png"></image>
+      </view>
+      </block>
+      <block wx:else>
+      <view class="praise-button" bindtap="praise" data-index="0">
+        <image src="../../static/image/thumb_up_selected.png"></image>
+      </view>
+      </block>
+      <block wx:if="{{praise!=1}}">
+      <view class="praise-button down" bindtap="praise"   data-index="1">
+        <image src="../../static/image/thumb_up.png"></image>
+      </view>
+      </block>
+      <block wx:else>
+      <view class="praise-button down"  bindtap="praise"  data-index="1">
+        <image src="../../static/image/thumb_up_selected.png"></image>
+      </view>
+      </block>
+    </view>
+  </view>
+  <view class="input-panel">
+  <textarea name="evaluate" placeholder="点评一下吧，您的意见很重要哦！" placeholder-style="color:#cccccc;"/>
+  </view>
+</view>
+
+
+<button class="submit-panel" formType="submit">
+提交评价
+</button>
+</form>
+</template>

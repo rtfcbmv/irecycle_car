@@ -7,8 +7,8 @@
 <block wx:if="{{service==0}}">
   <template is="goods-list" data="{{goods_type:goods_type,goods:goods,price_range:price_range,selected_type:selected_type,selected_goods:selected_goods,image:image,animationData_left_polish:animationData_left_polish}}"></template>
   <!--<template is="goods_cartoon" data="{{animationData_goods:animationData_goods,image:image,left:left,top:top}}"></template>-->
-<template is="Hover_button" data="{{left:left,top:top}}"></template>
+
 </block>
 <block wx:if="{{service==1}}">
-  <template is="secondHand" data="{{animation_textarea:animation_textarea,prompt:prompt,goods_list:goods_list}}"></template>
+  <template is="secondHand" data="{{animation_textarea:animation_textarea,goods_list:goods_list}}"></template>
 </block>

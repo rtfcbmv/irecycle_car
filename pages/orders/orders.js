@@ -1,15 +1,35 @@
 // pages/orders/orders.js
 function countdown(that){
   if (that.data.count_down <= 0)
-    that.setData({
-      count_down: 60,
-    })
+    refresh(that)
   setTimeout(function () {
     that.setData({
       count_down: that.data.count_down - 1
     })
     countdown(that)
   }, 1000)
+}
+
+function refresh(that) {
+  that.setData({
+    count_down: 60,
+  })
+  wx.request({
+    url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
+    data: {
+      driverid: 1
+    },
+    method: 'GET',
+    // header: {}, // 设置请求的 header
+    success: function (res) {
+      console.log('已刷新')
+      that.setData({
+        order_list: res.data,
+        num: res.data.length
+      })
+      //console.log(that.data.order_list)
+    },
+  })
 }
 
 var app = getApp()
@@ -19,28 +39,9 @@ Page({
     num:0,
     count_down:60
   },
-  URL: 'https://irecycle.gxxnr.cn/api/car/',
+
   refresh:function(){
-    this.setData({
-      count_down: 60,
-    })
-    var that = this;
-    wx.request({
-      url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
-      data: {
-        driverid:1
-      },
-      method: 'GET',
-      // header: {}, // 设置请求的 header
-      success: function (res) {
-        console.log('已刷新')
-        that.setData({
-          order_list: res.data,
-          num: res.data.length
-        })
-        //console.log(that.data.order_list)
-      },
-    })
+    refresh(this)
   },
   order_takeing: function (e) {
     var that = this;
@@ -146,23 +147,23 @@ Page({
   },
 
   onShow: function () {
-   /* var that = this;
+    var that =this
     wx.request({
       url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
       data: {
-        driverid: app.globalData.userid
+        driverid: 1
       },
       method: 'GET',
       // header: {}, // 设置请求的 header
       success: function (res) {
-        console.log('返回：')
-        console.log(res)
+        console.log('已刷新')
         that.setData({
           order_list: res.data,
           num: res.data.length
         })
+        console.log(res.data)
       },
-    })*/
+    })
   },
 
   /**

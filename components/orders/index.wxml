@@ -94,10 +94,10 @@
 <block wx:if="{{order_state==0 && numOne>0}}">
 <view class="myorder_list">
     <block wx:for="{{myorder_list}}">
-    <view bindtap="{{item.state==1?'':'selectorder'}}" data-index="{{index}}" class="orders-item {{item.state==1?'invalid':''}}">
+    <view wx:if="{{item.state!=6}}" bindtap="{{item.state==1?'':'selectorder'}}" data-index="{{index}}" class="orders-item {{item.state==1?'invalid':''}}">
       <view class="name">{{item.name}}</view>
       <view class="righttext">
-        <view class="address">{{item.address}}{{item.addressdetail}}</view>
+        <view class="address">{{item.address}} {{item.addressdetail}}</view>
         <view class="time">{{item.time}}</view>
       </view>
       <image wx:if="{{item.state!=1}}" src="../../static/image/more_{{select_order==index?'up':'down'}}.png" class="more-down"></image>
@@ -129,10 +129,10 @@
 
 <view class="myorder_list">
     <block wx:for="{{myorder_list}}">
-    <view bindtap="selectorder" data-index="{{index}}" class="orders-item">
+    <view wx:if="{{item.state==6}}" bindtap="selectorder" data-index="{{index}}" class="orders-item">
       <view class="name">{{item.name}}</view>
       <view class="righttext">
-        <view class="address">{{item.address}}</view>
+        <view class="address">{{item.address}} {{item.addressdetail}}</view>
         <view class="time">{{item.time}}</view>
       </view>
 

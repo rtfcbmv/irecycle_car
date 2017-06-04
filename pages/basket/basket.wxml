@@ -1,8 +1,0 @@
-<!--pages/basket/basket.wxml-->
-<import src="../../components/test/test1.wxml"></import>
-<block wx:if="{{order_num>0}}">
-<template is="basket" data="{{order_list:order_list,goods:goods,weight_range:weight_range,operate:operate,select_all:select_all,amount:amount}}"></template>
-</block>
-<block wx:else>
-<template is="empty-basket"></template>
-</block>

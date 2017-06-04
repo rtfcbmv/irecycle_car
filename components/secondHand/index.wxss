@@ -3,7 +3,7 @@ page{
 }
 
 .trade-panel{
-  margin-top:200rpx;
+  margin-top:150rpx;
   width:100%;
 }
 .trade-panel .title{
@@ -56,4 +56,31 @@ page{
   line-height:80rpx;
   text-align:center;
   color: #FFF;
+}
+
+.scroll-panel{
+  margin-left:10%;
+  margin-top:50rpx;
+  width:80%;
+  height:500rpx;
+  background:#FFF;
+}
+
+.scroll-panel .item{
+  display:flex;
+  flex-direction:row;
+  width:100%;
+  justify-content:space-between;
+  align-items:center;
+  height: 80rpx;
+
+}
+.scroll-panel .item .name{
+  
+  line-height: 80rpx;
+}
+.scroll-panel .item .num{
+ 
+  line-height: 80rpx;
+  width: 100rpx;
 }

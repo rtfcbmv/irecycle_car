@@ -1,0 +1,44 @@
+.grade-panel{
+  margin:50rpx 0rpx 0rpx 40rpx;
+}
+.grade-panel .up-panel{
+  display: flex;
+  flex-direction: row;
+}
+.grade-panel .up-panel image{
+  width:100rpx;
+  height:90rpx;
+  border-radius: 50%;
+}
+.grade-panel .up-panel .righttext{
+  margin-left:20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.grade-panel .up-panel .righttext .delivertime{
+  margin-top:10rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.grade-panel .up-panel .righttext .delivertime .tip{
+  margin:3rpx 5rpx 0rpx 20rpx ;
+  font-size:30rpx;
+  line-height:25rpx;
+  color:#C4C4C4;
+  width:25rpx;
+  height:25rpx;
+  border-radius: 50%;
+  border:1rpx solid #ABABAB;
+  text-align:center;
+}
+.grade-panel .bottom-panel{
+  margin-top:45rpx;
+  display: flex;
+  flex-direction: row;
+}
+.grade-panel .bottom-panel image{
+  margin-left:20rpx;
+  width:40rpx;
+  height:40rpx;
+}

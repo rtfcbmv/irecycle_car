@@ -4,7 +4,7 @@
             <image src="{{info.avatarUrl}}"></image>
             <view class="user-info-detail">
                 <view class="user-name">{{info.nickName}}</view>
-                <view class="user-more">工作人员编号：{{num}}</view>
+                <view class="user-more">回收车编号：{{num}}</view>
             </view>
         </view>
         <view class="user-item">
@@ -32,15 +32,14 @@
     <input name="driverid" type="password" placeholder="请输入密钥" value="" bindinput="passwd" ></input>
   </view>
 
-
-  <view class="info-item">
-    <text>用户名</text>
-    <input name="name" placeholder="请输入用户名" value=""></input>
-  </view>
-
   <view class="info-item">
     <text>联系电话</text>
     <input name="phone" placeholder="请输入联系电话" value=""></input>
+  </view>
+
+  <view class="info-item">
+    <text>用户名</text>
+    <input name="name" placeholder="请输入pc端用户名" value=""></input>
   </view>
 
   <view class="info-item">
@@ -54,7 +53,7 @@
 <button class="submit-buttun" formType="submit">提交</button>
 </block>
 <block wx:else>
-<button class="submit-buttun" style="background:#cccccc">提交</button>
+<button class="submit-buttun no-use" >提交</button>
 </block>
 </form>
 

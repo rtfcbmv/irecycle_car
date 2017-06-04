@@ -11,7 +11,8 @@ Page({
   },
   changepape:function(e){
     this.setData({
-      order_state: e.target.dataset.index
+      order_state: e.target.dataset.index,
+      select_order: -1
     })
   },
   selectorder: function (e) {
@@ -65,6 +66,7 @@ Page({
   onReady: function () {
   
   },
+  
   onShow: function () {
     var that = this;
     wx.request({
@@ -79,17 +81,19 @@ Page({
         var num=0
         for (var i = 0; i < res.data.length;i++)
         {
-          if (res.data.state==6)
+          if (res.data[i].state==6)
             num++
         }
         that.setData({
           myorder_list: res.data,
           numOne: res.data.length-num,
-          numTwo:num
+          numTwo:num,
+          select_order: -1
         })
       },
     })
   },
+
   onHide: function () {
   
   },
