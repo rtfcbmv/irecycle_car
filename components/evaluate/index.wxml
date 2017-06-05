@@ -1,9 +1,9 @@
 <template name="evaluate">
 <view class="grade-panel">
   <view class="up-panel">
-    <image src="../../static/image/truck.png"></image>
+    <image src="../../static/image/user.png"></image>
     <view class="righttext">
-      <text style="font-size:35rpx;">回收车收货</text>
+      <text style="font-size:35rpx;">用户</text>
       <view class="delivertime">
         <text style="font-size:30rpx;">到达时间 {{time}}</text>
         <picker class="picker" mode="time" value="{{time}}" bindchange="timechange">
@@ -18,9 +18,14 @@
   <view class="bottom-panel">
     <text style="color:#ABABAB;font-size:30rpx;margin:10rpx 20rpx 0rpx 0rpx">服务质量</text>
     <block wx:for="{{[1,2,3,4,5]}}">
-      <block wx:if="{{index<service_grade}}">
+      <block wx:if="{{item<=service_grade}}">
       <view bindtap="service_grade" data-index="{{item}}">
       <image src="../../static/image/star_taken.png"></image>
+      </view>
+      </block>
+      <block wx:elif="{{item==(service_grade+0.5)}}">
+      <view bindtap="service_grade" data-index="{{item}}">
+      <image src="../../static/image/star_halftaken.png"></image>
       </view>
       </block>
       <block wx:else>

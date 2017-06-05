@@ -135,8 +135,16 @@
         <view class="address">{{item.address}} {{item.addressdetail}}</view>
         <view class="time">{{item.time}}</view>
       </view>
-
+      <image wx:if="{{item.state!=1}}" src="../../static/image/more_{{select_order==index?'up':'down'}}.png" class="more-down"></image>
     </view>
+    <block wx:if="{{select_order==index}}">
+          <view class="operate-panel">
+              <view class="item" bindtap="gotoDetail">查看详情</view>
+              <view wx:if="{{!item.isEvaluated}}" class="item" bindtap="gotoEvaluate">评价此单</view>
+              <view wx:if="{{item.isEvaluated}}" class="item" style="background:#cccccc">已评价</view>
+          </view>
+        </block>
+
     </block>
 </view>
 

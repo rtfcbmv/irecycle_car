@@ -7,6 +7,20 @@ function countdown(that) {
       success: function(res) {
         that.globalData.location = res
         console.log(that.globalData.location)
+        /*wx.request({
+          url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
+          data: {
+            driverid: app.globalData.userid,
+            latitude:res.latitude,
+            longitude:res.longitude
+          },
+          method: 'GET',
+          // header: {}, // 设置请求的 header
+          success: function (res) {
+            console.log('返回：')
+            
+          },
+        })*/
       },
     })
   }

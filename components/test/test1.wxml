@@ -48,7 +48,7 @@
         <block wx:if="{{index==selected_goods}}">
         <view class="bottom-panel">
             <text>重量：</text>
-            <input placeholder="请输入重量（斤）"  type="number" placeholder-style="color:#cccccc;" value="{{item.weight}}" bindinput="inputweight" bindblur="submitweight" data-index="{{index}}" data-id="{{item.id}}"/>
+            <input placeholder="请输入重量（斤）"  type="number" placeholder-style="color:#cccccc;" value="{{item.weight}}" bindinput="inputweight"  data-index="{{index}}" data-id="{{item.id}}"/>
         </view>
         </block>
     </view>
@@ -58,7 +58,7 @@
 
 <template name="Hover_button">
     <navigator url="../basket/basket" open-type="switchTab">
-    <view bindtap="tap"  class="Hover_button-panel" style="position:fixed;left:{{left}}rpx;top:{{top}}rpx;" bindtouchmove="Hovermove">
+    <view bindtap="tap"  class="Hover_button-panel" style="position:fixed;left:{{left}}rpx;top:{{top}}rpx;"bindtouchmove="Hovermove">
     <image src="../../static/image/buycar_white.png"></image>
     </view>
     </navigator>

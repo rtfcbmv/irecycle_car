@@ -33,6 +33,18 @@ Page({
     })
   },
 
+  gotoEvaluate: function () {
+    wx.setStorage({
+      key: 'orderdetail',
+      data: this.data.myorder_list[this.data.select_order],
+      success: function () {
+        wx.navigateTo({
+          url: '../evaluate/evaluate',
+        })
+      }
+    })
+  },
+
   orderCancel:function(){
     var that = this
     wx.request({
