@@ -73,11 +73,9 @@
 </image>
 </view>
 
-<block wx:if="order.state==2">
-<view bindtap="order_takeing" class="ordertake-panel">
+<view wx:if="{{order.state==2}}" bindtap="order_takeing" class="ordertake-panel">
 接单
 </view>
-</block>
 </template>
 
 
@@ -103,7 +101,7 @@
       <image wx:if="{{item.state!=1}}" src="../../static/image/more_{{select_order==index?'up':'down'}}.png" class="more-down"></image>
 
       <image wx:if="{{item.state==1}}" class="del-node" src="../../static/image/forbidden.png"></image>
-      <image wx:if="{{item.state==3}}" class="del-node" src="../../static/image/truck.png"></image>
+      <image wx:if="{{item.state==3}}" class="del-node shake" src="../../static/image/truck.png"></image>
       <image wx:if="{{item.state==4}}" class="del-node" src="../../static/image/tip.png"></image>
 
 

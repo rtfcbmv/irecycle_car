@@ -40,11 +40,11 @@ Page({
     })
   },
   formSubmit: function (e) {
+    console.log(this.data.orderid)
     var that = this
     wx.request({
-      url: 'https://irecycle.gxxnr.cn/api/user/evaluate.do',
+      url: 'https://irecycle.gxxnr.cn/api/car/carevaluate.do',
       data: {
-        userid: app.globalData.userid,
         orderid: that.data.orderid,
         star: that.data.service_grade,
         text: e.detail.value.evaluate

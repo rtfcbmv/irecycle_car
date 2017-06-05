@@ -115,7 +115,7 @@
 .del-node{
   margin-top:15rpx;
   position:absolute;
-  right:20%;
+  right:18%;
   width:70rpx;
   height:70rpx;
   z-index:initial;
@@ -307,4 +307,22 @@
   color:#FFF;
   border-radius: 10rpx;
   background:#66CDAA;
+}
+.shake{
+  animation:shaking .5s infinite;
+  transform:rotate(0deg);
+}
+@keyframes shaking{
+  0% {
+    transform:rotate(0deg);
+  }
+  33%{
+    transform:rotate(5deg);
+  }
+  66%{
+    transform:rotate(-5deg);
+  }
+  100%{
+    transform:rotate(0deg);
+  }
 }
