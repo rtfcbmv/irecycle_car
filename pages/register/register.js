@@ -29,7 +29,7 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         app.globalData.userid = res.data.driverid
         wx.reLaunch({
           url: '../orders/orders',

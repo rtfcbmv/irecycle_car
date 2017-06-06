@@ -8,7 +8,7 @@ function countdown(that) {
       type:'gcj02',
         success: function (res) {
           that.globalData.location = res
-          console.log(that.globalData.location)
+          //console.log(that.globalData.location)
           wx.request({
             url: "https://irecycle.gxxnr.cn/api/car/setlocation.do",
             data: {
@@ -22,7 +22,7 @@ function countdown(that) {
             method: 'POST',
             // header: {}, // 设置请求的 header
             success: function (res) {
-              console.log('提交坐标')
+              //console.log('提交坐标')
             },
           })
         },
@@ -62,6 +62,6 @@ App({
       
   },
   onError: function(msg) {
-    console.log(msg)
+    //console.log(msg)
   }
 })

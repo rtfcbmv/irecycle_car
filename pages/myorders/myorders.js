@@ -60,7 +60,7 @@ Page({
       },
       method: 'GET',
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         wx.request({
           url: "https://irecycle.gxxnr.cn/api/car/getmyorderlist.do",
           data: {
@@ -95,7 +95,7 @@ Page({
       method: 'GET',
       // header: {}, // 设置请求的 header
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         var num=0
         for (var i = 0; i < res.data.length;i++)
         {
@@ -166,7 +166,7 @@ Page({
       method: 'GET',
       // header: {}, // 设置请求的 header
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         var num = 0
         for (var i = 0; i < res.data.length; i++) {
           if (res.data.state == 6)

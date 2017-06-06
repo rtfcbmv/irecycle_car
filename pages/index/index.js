@@ -15,7 +15,7 @@ Page({
     }]
   },
   onLoad:function(options){
-    console.log("坐标：" + options.longitude + ' ' + options.latitude)
+    //console.log("坐标：" + options.longitude + ' ' + options.latitude)
     var sub = this.data.Mapmarkers
     sub[0].longitude = options.longitude
     sub[0].latitude = options.latitude
