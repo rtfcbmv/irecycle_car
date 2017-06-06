@@ -26,14 +26,14 @@ function requestFP(that) {
     method: 'GET',
     // header: {}, // 设置请求的 header
     success: function (res) {
-      console.log('已获取废品订单')
+      //console.log('已获取废品订单')
       that.data.haveorder.FP = res.data.length
       that.setData({
         order_list: res.data,
         num: res.data.length,
         haveorder: that.data.haveorder
       })
-      console.log(res.data)
+      //console.log(res.data)
     },
   })
 }
@@ -46,14 +46,14 @@ function requestXJ(that) {
     method: 'GET',
     // header: {}, // 设置请求的 header
     success: function (res) {
-      console.log('已获取小件订单')
+      //console.log('已获取小件订单')
       that.data.haveorder.XJ = res.data.length
       that.setData({
         order_list: res.data,
         num: res.data.length,
         haveorder: that.data.haveorder
       })
-      console.log(res.data)
+      //console.log(res.data)
     },
   })
 }
@@ -82,8 +82,8 @@ Page({
       method: 'GET',
       // header: {}, // 设置请求的 header
       success: function (res) {
-        console.log('抢单啦！！！')
-        console.log(res)
+        //console.log('抢单啦！！！')
+        //console.log(res)
         if (res.data.isSuccess)
           wx.showToast({
             title: '你抢到单啦',
@@ -132,11 +132,11 @@ Page({
     var that = this
     wx.login({
       success: function (res) {
-        console.log("已获取到登陆态")
-        console.log(res.code)
+        //console.log("已获取到登陆态")
+        //console.log(res.code)
         wx.getUserInfo({
           success: function (res) {
-            console.log("已获取到微信账户个人信息")
+            //console.log("已获取到微信账户个人信息")
             app.globalData.info = res.userInfo
           }
         })
@@ -150,7 +150,7 @@ Page({
             'content-type': 'application/json'
           },
           success: function (res) {
-            console.log(res)
+            //console.log(res)
             if (res.data.errCode == 1)
              {
               app.globalData.openid = res.data.data.openid
@@ -168,7 +168,7 @@ Page({
                 method: 'GET',
                 // header: {}, // 设置请求的 header
                 success: function (res) {
-                  console.log('已获取小件订单')
+                  //console.log('已获取小件订单')
                   that.data.haveorder.XJ = res.data.length
                   that.setData({
                     haveorder: that.data.haveorder
@@ -199,7 +199,7 @@ Page({
         method: 'GET',
         // header: {}, // 设置请求的 header
         success: function (res) {
-          console.log('已获取小件订单')
+          //console.log('已获取小件订单')
           that.data.haveorder.XJ = res.data.length
           that.setData({
             haveorder: that.data.haveorder

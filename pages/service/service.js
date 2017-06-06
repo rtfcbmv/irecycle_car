@@ -37,7 +37,7 @@ Page({
       timingFunction: 'ease',
     })
     animation.height(10+'rpx').top(35+ e.target.dataset.index*80+'rpx').step({ duration: 200 })
-    console.log(animation)
+    //console.log(animation)
     that.setData({
       animationData_left_polish: animation.export()
     })
@@ -59,7 +59,7 @@ Page({
   },
 
   Hovermove: function (e) {
-    console.log(e)
+    //console.log(e)
     this.setData({
       left:2*e.touches[0].clientX-25,
       top:2*e.touches[0].clientY+20
@@ -79,7 +79,7 @@ Page({
 
 
     var node = 0
-    console.log(e)
+    //console.log(e)
     for (var i = 0; i < this.data.goods_list.length; i++) {
       if (this.data.goods_list[i].id == e.target.dataset.id) {
         node = 1
@@ -103,7 +103,7 @@ Page({
         goods_list: this.data.goods_list
       })
     }
-    console.log(this.data.goods_list)
+    //console.log(this.data.goods_list)
   },
 
 
@@ -131,7 +131,7 @@ Page({
     var postdata = {}
     postdata.orderid = this.data.orderid
     postdata.goods = this.data.goods_list
-    console.log(postdata)
+    //console.log(postdata)
     wx.request({
       url: "https://irecycle.gxxnr.cn/api/car/finishorder.do",
       data: {
@@ -142,7 +142,7 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         setTimeout(function () {
           wx.hideLoading()
           wx.showToast({
@@ -176,7 +176,7 @@ Page({
 
 
   onLoad:function(options){
-    console.log(options)
+    //console.log(options)
     this.setData({
       orderid:options.index
     })
@@ -188,7 +188,7 @@ Page({
       // header: {}, // 设置请求的 header
       success: function(res){
         // success
-        console.log(res)
+        //console.log(res)
         var goods_type =[]
         for (var i =0;i < res.data.goodsTypeList.length;i++)
         {

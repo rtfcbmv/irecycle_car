@@ -32,8 +32,8 @@ Page({
       },
       method: 'GET',
       success: function (res) {
-        console.log('抢单啦！！！')
-        console.log(res)
+        //console.log('抢单啦！！！')
+        //console.log(res)
         if (res.data.isSuccess)
           wx.showToast({
             title: '你抢到单啦',

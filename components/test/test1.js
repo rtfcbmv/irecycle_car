@@ -5,12 +5,12 @@ function showmap(){
     this.mapCtx = wx.createMapContext('myMap')
     this.mapCtx.getCenterLocation({
       success: function(res){
-        console.log(res.longitude)
-        console.log(res.latitude)
+        //console.log(res.longitude)
+        //console.log(res.latitude)
       }
     })
     this.mapCtx.moveToLocation()
-    console.log(this.mapCtx)
+    //console.log(this.mapCtx)
 }
 
 function selectweight(selected_type,e, goods){
