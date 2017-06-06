@@ -52,7 +52,7 @@
       <image src="../../static/image/phone.png" class="image"></image>
       <text>{{order.phone}}</text>
     </view>
-    <navigator url="../index/index">
+    <navigator url="../index/index?latitude={{order.latitude}}&longitude={{order.longitude}}">
     <view class="term-item" style="border-bottom:#FFF">
       <image src="../../static/image/address.png" class="image"></image>
       <text>{{order.address}}</text>

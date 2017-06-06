@@ -5,6 +5,7 @@ function countdown(that) {
     sub = Math.ceil(sub),
     that.globalData.count_down = sub,
       wx.getLocation({
+      type:'gcj02',
         success: function (res) {
           that.globalData.location = res
           console.log(that.globalData.location)

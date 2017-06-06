@@ -1,2 +1,2 @@
 <import src="../../components/test/test1.wxml"></import>
-<template is="map"></template>
+<template is="map" data="{{location:location,Mapmarkers:Mapmarkers}}"></template>

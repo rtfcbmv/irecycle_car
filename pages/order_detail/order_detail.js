@@ -1,5 +1,5 @@
 // pages/order_detail/order_detail.js
-
+var app = getApp()
 Page({
   data: {
     order:{}
@@ -25,7 +25,7 @@ Page({
     wx.request({
       url: "https://irecycle.gxxnr.cn/api/car/ordertaken.do",
       data: {
-        driverid: 1,
+        driverid: app.globalData.userid,
         orderid: that.data.order.id
       },
       method: 'GET',

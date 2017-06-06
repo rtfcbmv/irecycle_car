@@ -17,7 +17,7 @@ function refresh(that) {
   wx.request({
     url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
     data: {
-      driverid: 1
+      driverid: app.globalData.userid
     },
     method: 'GET',
     // header: {}, // 设置请求的 header
@@ -54,6 +54,20 @@ Page({
       method: 'GET',
       // header: {}, // 设置请求的 header
       success: function (res) {
+        console.log('抢单啦！！！')
+        console.log(res)
+        if (res.data.isSuccess)
+          wx.showToast({
+            title: '你抢到单啦',
+            image: '../../static/image/smile.png',
+            duration: 1500
+          })
+        if (!res.data.isSuccess)
+          wx.showToast({
+            title: '手慢了一丢丢',
+            image: '../../static/image/sad.png',
+            duration:1500
+          })
         wx.request({
           url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
           data: {
@@ -111,13 +125,14 @@ Page({
           success: function (res) {
 
             console.log(res)
-            if (res.data.errCode == 1) {
+            if (res.data.errCode == 1)
+             {
               app.globalData.openid = res.data.data.openid
               wx.reLaunch({
                 url: '../register/register',
               })
-          }
-          else {
+            }
+            else {
               app.globalData.userid = res.data.data.driverid
               wx.request({
                 url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
@@ -147,23 +162,26 @@ Page({
   },
 
   onShow: function () {
-    var that =this
-    wx.request({
-      url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
-      data: {
-        driverid: 1
-      },
-      method: 'GET',
-      // header: {}, // 设置请求的 header
-      success: function (res) {
-        console.log('已刷新')
-        that.setData({
-          order_list: res.data,
-          num: res.data.length
-        })
-        console.log(res.data)
-      },
-    })
+    if (app.globalData.userid!=-1)
+    {
+      var that =this
+      wx.request({
+        url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
+        data: {
+          driverid: app.globalData.userid
+        },
+        method: 'GET',
+        // header: {}, // 设置请求的 header
+        success: function (res) {
+          console.log('已刷新')
+          that.setData({
+            order_list: res.data,
+            num: res.data.length
+          })
+          console.log(res.data)
+        },
+      })
+    }
   },
 
   /**

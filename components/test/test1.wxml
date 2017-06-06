@@ -1,5 +1,5 @@
 <template name="map">
-    <map id="myMap" show-location longitude="126.628095" latitude="45.744356"/>
+    <map id="myMap" show-location longitude="{{location.longitude}}" latitude="{{location.latitude}}" markers="{{Mapmarkers}}"/>
 </template>
 
 <template name="uplist">
