@@ -14,6 +14,10 @@ function refresh(that) {
   that.setData({
     count_down: 60,
   })
+  that.data.style == 0 ? requestFP(that) : requestXJ(that)
+}
+
+function requestFP(that) {
   wx.request({
     url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
     data: {
@@ -22,12 +26,34 @@ function refresh(that) {
     method: 'GET',
     // header: {}, // 设置请求的 header
     success: function (res) {
-      console.log('已刷新')
+      console.log('已获取废品订单')
+      that.data.haveorder.FP = res.data.length
       that.setData({
         order_list: res.data,
-        num: res.data.length
+        num: res.data.length,
+        haveorder: that.data.haveorder
       })
-      //console.log(that.data.order_list)
+      console.log(res.data)
+    },
+  })
+}
+function requestXJ(that) {
+  wx.request({
+    url: "https://irecycle.gxxnr.cn/api/car/getcarorders.do",
+    data: {
+      driverid: app.globalData.userid
+    },
+    method: 'GET',
+    // header: {}, // 设置请求的 header
+    success: function (res) {
+      console.log('已获取小件订单')
+      that.data.haveorder.XJ = res.data.length
+      that.setData({
+        order_list: res.data,
+        num: res.data.length,
+        haveorder: that.data.haveorder
+      })
+      console.log(res.data)
     },
   })
 }
@@ -37,7 +63,9 @@ Page({
   data: {
     order_list: [],
     num:0,
-    count_down:60
+    count_down:60,
+    style:0,
+    haveorder:{FP:0,XJ:0}
   },
 
   refresh:function(){
@@ -46,7 +74,7 @@ Page({
   order_takeing: function (e) {
     var that = this;
     wx.request({
-      url: "https://irecycle.gxxnr.cn/api/car/ordertaken.do",
+      url: that.data.style == 0 ? "https://irecycle.gxxnr.cn/api/car/ordertaken.do" : "https://irecycle.gxxnr.cn/api/car/takecarorder.do",
       data: {
         driverid: app.globalData.userid,
         orderid: that.data.order_list[e.target.dataset.index].id
@@ -64,25 +92,11 @@ Page({
           })
         if (!res.data.isSuccess)
           wx.showToast({
-            title: '手慢了一丢丢',
+            title: '手慢了没抢到',
             image: '../../static/image/sad.png',
             duration:1500
           })
-        wx.request({
-          url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
-          data: {
-            driverid: app.globalData.userid
-          },
-          method: 'GET',
-          // header: {}, // 设置请求的 header
-          success: function (res) {
-            that.setData({
-              order_list: res.data,
-              num: res.data.length
-            })
-            console.log(that.data.order_list)
-          },
-        })
+        that.data.style == 0 ? requestFP(that) : requestXJ(that)
       },
     })
   },
@@ -90,7 +104,10 @@ Page({
   gotoDetail: function (e) {
     wx.setStorage({
       key: 'orderdetail',
-      data: this.data.order_list[e.currentTarget.dataset.index],
+      data: {
+        order:this.data.order_list[e.currentTarget.dataset.index],
+        style:this.data.style
+        },
       success: function () {
         wx.navigateTo({
           url: '../order_detail/order_detail',
@@ -99,6 +116,16 @@ Page({
     })
   },
 
+  changestyle: function (e) {
+    this.setData({
+      style: e.currentTarget.dataset.index
+    })
+    var that = this
+    if (e.currentTarget.dataset.index==0)
+      requestFP(that)
+    else
+      requestXJ(that)
+  },
 
   onLoad: function (options) {
     countdown(this)
@@ -123,7 +150,6 @@ Page({
             'content-type': 'application/json'
           },
           success: function (res) {
-
             console.log(res)
             if (res.data.errCode == 1)
              {
@@ -135,21 +161,21 @@ Page({
             else {
               app.globalData.userid = res.data.data.driverid
               wx.request({
-                url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
+                url: "https://irecycle.gxxnr.cn/api/car/getcarorders.do",
                 data: {
                   driverid: app.globalData.userid
                 },
                 method: 'GET',
                 // header: {}, // 设置请求的 header
                 success: function (res) {
-                  console.log('返回：')
-                  console.log(res)
+                  console.log('已获取小件订单')
+                  that.data.haveorder.XJ = res.data.length
                   that.setData({
-                    order_list: res.data,
-                    num: res.data.length
+                    haveorder: that.data.haveorder
                   })
                 },
               })
+              requestFP(that)
           }
           }
         })
@@ -166,20 +192,23 @@ Page({
     {
       var that =this
       wx.request({
-        url: "https://irecycle.gxxnr.cn/api/car/getavailorderlist.do",
+        url: "https://irecycle.gxxnr.cn/api/car/getcarorders.do",
         data: {
           driverid: app.globalData.userid
         },
         method: 'GET',
         // header: {}, // 设置请求的 header
         success: function (res) {
-          console.log('已刷新')
+          console.log('已获取小件订单')
+          that.data.haveorder.XJ = res.data.length
           that.setData({
-            order_list: res.data,
-            num: res.data.length
+            haveorder: that.data.haveorder
           })
-          console.log(res.data)
         },
+      })
+      requestFP(that)
+      that.setData({
+        style:0
       })
     }
   },

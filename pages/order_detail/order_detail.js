@@ -2,7 +2,8 @@
 var app = getApp()
 Page({
   data: {
-    order:{}
+    order:{},
+    style:0
   },
 
 
@@ -12,7 +13,8 @@ Page({
       key: 'orderdetail',
       success: function (res) {
         that.setData({
-          order: res.data
+          order: res.data.order,
+          style: res.data.style
         })
       },
       fail: function (res) { },
@@ -23,12 +25,29 @@ Page({
   order_takeing: function () {
     var that = this;
     wx.request({
-      url: "https://irecycle.gxxnr.cn/api/car/ordertaken.do",
+      url: that.data.style == 0 ? "https://irecycle.gxxnr.cn/api/car/ordertaken.do" : "https://irecycle.gxxnr.cn/api/car/takecarorder.do",
       data: {
         driverid: app.globalData.userid,
         orderid: that.data.order.id
       },
       method: 'GET',
+      success: function (res) {
+        console.log('抢单啦！！！')
+        console.log(res)
+        if (res.data.isSuccess)
+          wx.showToast({
+            title: '你抢到单啦',
+            image: '../../static/image/smile.png',
+            duration: 1500
+          })
+        if (!res.data.isSuccess)
+          wx.showToast({
+            title: '手慢了没抢到',
+            image: '../../static/image/sad.png',
+            duration: 1500
+          })
+        that.data.style == 0 ? requestFP(that) : requestXJ(that)
+      }
     })
     wx.navigateBack({
       delta: 1

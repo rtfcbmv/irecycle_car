@@ -1,0 +1,3 @@
+<!--pages/myorders/myorders.wxml-->
+<import src="../../components/orders/index.wxml"></import>
+<template is="mydeliverorders" data="{{myorder_list:myorder_list,order_state:order_state,select_order:select_order,numOne:numOne,numTwo:numTwo}}"></template>

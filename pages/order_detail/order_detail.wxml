@@ -1,3 +1,5 @@
 <!--pages/order_detail/order_detail.wxml-->
 <import src="../../components/orders/index.wxml"></import>
-<template is="orderdetail" data="{{order:order}}"></template>
+
+<template wx:if="{{style==0}}" is="orderdetail" data="{{order:order}}"></template>
+<template wx:if="{{style==1}}" is="deliverorderdetail" data="{{order:order}}"></template>

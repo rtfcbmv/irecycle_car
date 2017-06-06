@@ -26,7 +26,7 @@ Page({
       key: 'orderdetail',
       data: {
         order:this.data.myorder_list[this.data.select_order],
-        style:0
+        style: 1
       },
       success: function () {
         wx.navigateTo({
@@ -41,7 +41,7 @@ Page({
       key: 'orderdetail',
       data:{
         order: this.data.myorder_list[this.data.select_order],
-        style:0
+        style:1
       },
       success: function () {
         wx.navigateTo({
@@ -88,30 +88,28 @@ Page({
   onShow: function () {
     var that = this;
     wx.request({
-      url: "https://irecycle.gxxnr.cn/api/car/getmyorderlist.do",
+      url: "https://irecycle.gxxnr.cn/api/car/getmycarorder.do",
       data: {
         driverid: app.globalData.userid
       },
       method: 'GET',
       // header: {}, // 设置请求的 header
       success: function (res) {
+        console.log('小件订单')
         console.log(res)
-        var num=0
-        for (var i = 0; i < res.data.length;i++)
-        {
-          if (res.data[i].state==6)
+        var num = 0
+        for (var i = 0; i < res.data.length; i++) {
+          if (res.data[i].state == 5)
             num++
         }
         that.setData({
           myorder_list: res.data,
-          numOne: res.data.length-num,
-          numTwo:num,
+          numOne: res.data.length - num,
+          numTwo: num,
           select_order: -1
         })
-      },
+      }
     })
-
-
   },
 
   onHide: function () {
