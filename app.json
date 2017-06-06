@@ -4,6 +4,7 @@
     "pages/orders/orders",
     "pages/register/register",    
     "pages/myorders/myorders",
+    "pages/mydeliverorders/mydeliverorders",
     "pages/service/service",
     "pages/index/index",
     "pages/evaluate/evaluate",

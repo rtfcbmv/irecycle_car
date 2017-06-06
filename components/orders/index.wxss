@@ -214,7 +214,7 @@
 
 .detail-remark text{
   margin-left:50rpx;
-  
+  color:#616161;
   word-wrap: break-word;
   word-break:break-all;
   font-size:30rpx;
@@ -325,4 +325,33 @@
   100%{
     transform:rotate(0deg);
   }
+}
+.order-style-panel{
+  height:60rpx;
+  width:100%;
+  background-color:#FFF;
+  display:flex;
+  flex-direction:row;
+  border-bottom:1rpx solid #ededed;
+}
+.order-style-panel .item{
+  line-height:60rpx;
+  height:60rpx;
+  width:50%;
+  display:flex;
+  flex-direction:row;
+}
+.order-style-panel .item .point{
+  margin-top:25rpx;
+  margin-left:10rpx;
+  width:15rpx;
+  height:15rpx;
+  background:red;
+  border-radius:50%;
+}
+.order-style-panel .item text{
+  margin-left:100rpx;
+  font-size:40rpx;
+  color:#66CDAA;
+
 }

@@ -11,7 +11,13 @@
             <navigator url="../myorders/myorders" hover-class="none">
             <view class="item">
                 <image src="../../static/image/my_order.png"></image>
-                <view class="item-title">我的订单</view>
+                <view class="item-title">废品回收订单</view>
+            </view>
+            </navigator>
+            <navigator url="../mydeliverorders/mydeliverorders" hover-class="none">
+            <view class="item">
+                <image src="../../static/image/my_order.png"></image>
+                <view class="item-title">小件运输订单</view>
             </view>
             </navigator>
             <view class="item">
