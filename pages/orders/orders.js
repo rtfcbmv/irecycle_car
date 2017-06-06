@@ -159,6 +159,7 @@ Page({
               })
             }
             else {
+              app.globalData.credit = res.data.data.credit
               app.globalData.userid = res.data.data.driverid
               wx.request({
                 url: "https://irecycle.gxxnr.cn/api/car/getcarorders.do",

@@ -42,6 +42,7 @@ App({
     iv:null,
     openid:"",
     userid:-1,
+    credit:0,
     info:{},
     count_down:5
   },

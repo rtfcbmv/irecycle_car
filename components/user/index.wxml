@@ -22,7 +22,7 @@
             </navigator>
             <view class="item">
                 <image src="../../static/image/reward.png"></image>
-                <view class="item-title">我的积分</view>
+                <view class="item-title">我的积分 {{credit}}</view>
             </view>  
         </view>
     </view>

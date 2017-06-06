@@ -2,7 +2,8 @@
 var app = getApp()
 Page({
   data:{
-    info:{}
+    info:{},
+    credit:0
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
