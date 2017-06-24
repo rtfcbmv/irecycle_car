@@ -62,7 +62,10 @@
   height:100rpx;
   width:200rpx;
   line-height:100rpx;
-  font-size:50rpx;
+  font-size:35rpx;
+  overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
 }
 .orders-item .righttext{
   display: flex;

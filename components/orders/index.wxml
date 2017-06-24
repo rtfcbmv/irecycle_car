@@ -63,13 +63,13 @@
       <image src="../../static/image/phone.png" class="image"></image>
       <text>{{order.phone}}</text>
     </view>
-    <navigator url="../index/index?latitude={{order.latitude}}&longitude={{order.longitude}}">
-    <view class="term-item" style="border-bottom:#FFF">
+    <!--<navigator url="../index/index?latitude={{order.latitude}}&longitude={{order.longitude}}">-->
+    <view class="term-item" style="border-bottom:#FFF" bindtap="gotomap" data-order="{{order}}">
       <image src="../../static/image/address.png" class="image"></image>
       <text>{{order.address}}</text>
       <image src="../../static/image/more.png" class="more-right"></image>
     </view>
-    </navigator>
+    
   </view>
 </view>
 

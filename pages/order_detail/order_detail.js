@@ -6,7 +6,18 @@ Page({
     style:0
   },
 
-
+gotomap:function(e){
+  console.log(e);
+  var latitude = e.currentTarget.dataset.order.latitude;
+  var longitude = e.currentTarget.dataset.order.longitude;
+  wx.openLocation({
+    latitude:latitude,
+    longitude:longitude,
+    scale:14,
+    name:'目的地',
+    address:e.currentTarget.dataset.order.addressdetail
+  })
+},
   onLoad: function () {
     var that = this
     wx.getStorage({
