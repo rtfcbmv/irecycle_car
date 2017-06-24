@@ -16,6 +16,7 @@ Page({
       info:app.globalData.info,
       num: app.globalData.userid
     })
+    console.log(app.globalData)
   },
   onHide:function(){
     // 页面隐藏

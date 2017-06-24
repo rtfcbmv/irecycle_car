@@ -1,8 +1,9 @@
 {
   "pages":[
-
+  
+  
     "pages/orders/orders",
-    "pages/register/register",    
+    "pages/register/register",
     "pages/myorders/myorders",
     "pages/mydeliverorders/mydeliverorders",
     "pages/service/service",

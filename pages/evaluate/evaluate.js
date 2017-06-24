@@ -42,6 +42,12 @@ Page({
   formSubmit: function (e) {
     //console.log(this.data.orderid)
     var that = this
+    var pData = {
+      orderid: that.data.orderid,
+      star: that.data.service_grade,
+      text: e.detail.value.evaluate
+    }
+    console.log(pData)
     wx.request({
       url: 'https://irecycle.gxxnr.cn/api/car/carevaluate.do',
       data: {
@@ -54,7 +60,7 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        //console.log(res)
+        console.log(res)
         wx.navigateBack({
           delta: 1
         })
@@ -67,10 +73,10 @@ Page({
     wx.getStorage({
       key: 'orderdetail',
       success: function (res) {
-        //console.log(res)
+        console.log(res)
         that.setData({
-          time: res.data.time.split(" ")[1],
-          orderid: res.data.id
+          time: res.data.order.time.split(" ")[1],
+          orderid: res.data.order.id
         })
       }
     })

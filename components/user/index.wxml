@@ -43,7 +43,7 @@
     <input name="phone" placeholder="请输入联系电话" value=""></input>
   </view>
 
-  <view class="info-item">
+  <!--<view class="info-item">
     <text>用户名</text>
     <input name="name" placeholder="请输入pc端用户名" value=""></input>
   </view>
@@ -51,7 +51,7 @@
   <view class="info-item">
     <text>密码</text>
     <input name="passwd" type="password" placeholder="请输入pc端密码" value="" bindinput="passwd" ></input>
-  </view>
+  </view>-->
   
 </view>
 

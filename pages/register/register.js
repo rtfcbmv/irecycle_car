@@ -15,13 +15,15 @@ Page({
     })
   },
   formSubmit:function(res){
+    console.log('driveid',res.detail.value.driverid)
+   // password: res.detail.value.passwd,
+     // username: res.detail.value.name,
     wx.request({
       url: "https://irecycle.gxxnr.cn/api/car/register.do",
       data: {
         phone: res.detail.value.phone,
         driverid: res.detail.value.driverid,
-        password: res.detail.value.passwd,
-        username: res.detail.value.name,
+        
         openid: app.globalData.openid
       },
       header: {
@@ -29,11 +31,20 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        //console.log(res)
+        console.log(res)
         app.globalData.userid = res.data.driverid
-        wx.reLaunch({
-          url: '../orders/orders',
-        })
+        if(res.data.status=='failed'){
+          wx.showToast({
+            title: '认证失败，请输入正确的信息',
+            icon:'loading'
+          })
+        }
+        else{
+          wx.reLaunch({
+            url: '../orders/orders',
+          })
+        }
+        
       },
     })
   },
