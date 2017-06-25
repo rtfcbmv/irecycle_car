@@ -11,8 +11,8 @@ gotomap:function(e){
   var latitude = e.currentTarget.dataset.order.latitude;
   var longitude  = e.currentTarget.dataset.order.longitude;
   wx.openLocation({
-    latitude:latitude,
-    longitude:longitude,
+    latitude:Number(latitude),
+    longitude:Number(longitude),
     scale:14,
     name:'目的地',
     address:e.currentTarget.dataset.order.addressdetail
