@@ -15,7 +15,6 @@ Page({
     })
   },
   formSubmit:function(res){
-    console.log('driveid',res.detail.value.driverid)
    // password: res.detail.value.passwd,
      // username: res.detail.value.name,
     wx.request({
@@ -23,7 +22,6 @@ Page({
       data: {
         phone: res.detail.value.phone,
         driverid: res.detail.value.driverid,
-        
         openid: app.globalData.openid
       },
       header: {
@@ -31,7 +29,7 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        console.log(res)
+        console.log('注册界面',res)
         app.globalData.userid = res.data.driverid
         if(res.data.status=='failed'){
           wx.showToast({
@@ -40,6 +38,7 @@ Page({
           })
         }
         else{
+
           wx.reLaunch({
             url: '../orders/orders',
           })

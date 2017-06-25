@@ -1,4 +1,5 @@
 // pages/evaluate/evaluate.js
+var app = getApp()
 Page({
   data: {
     time: "14:00",
@@ -42,12 +43,11 @@ Page({
   formSubmit: function (e) {
     //console.log(this.data.orderid)
     var that = this
-    var pData = {
-      orderid: that.data.orderid,
-      star: that.data.service_grade,
-      text: e.detail.value.evaluate
-    }
-    console.log(pData)
+    /*console.log('userid', app.globalData.userid)
+    console.log('orderid', that.data.orderid)
+    console.log('star', that.data.service_grade)
+    console.log('text', e.detail.value.evaluate)*/
+
     wx.request({
       url: 'https://irecycle.gxxnr.cn/api/car/carevaluate.do',
       data: {

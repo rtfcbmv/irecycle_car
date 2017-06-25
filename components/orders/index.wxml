@@ -65,9 +65,9 @@
     </view>
     <!--<navigator url="../index/index?latitude={{order.latitude}}&longitude={{order.longitude}}">-->
     <view class="term-item" style="border-bottom:#FFF" bindtap="gotomap" data-order="{{order}}">
-      <image src="../../static/image/address.png" class="image"></image>
-      <text>{{order.address}}</text>
-      <image src="../../static/image/more.png" class="more-right"></image>
+      <image bindtap="gotomap" data-order="{{order}}" src="../../static/image/address.png" class="image"></image>
+      <text bindtap="gotomap" data-order="{{order}}">{{order.address}}</text>
+      <image bindtap="gotomap" data-order="{{order}}" src="../../static/image/more.png" class="more-right"></image>
     </view>
     
   </view>

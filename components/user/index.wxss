@@ -29,7 +29,8 @@ page{
 }
 .user-more{
     margin-top: 20rpx;
-    color: rgb(200,200,195)
+    font-size:35rpx;
+    color: #F57E59;
 }
 .user-item{
     margin-top: 50rpx;
@@ -45,17 +46,17 @@ page{
     color: rgb(95,95,95);
     display: flex;
     justify-content: space-between;
-   
 }
 .item image{
     width: 70rpx;
     height: 70rpx;
     position: relative;
     margin: 15rpx;
+    margin-left: 60rpx;
 }
 .item-title{
     flex-grow: 4;
-    margin-left: 40rpx;
+    margin-left: 60rpx;
 }
 
 

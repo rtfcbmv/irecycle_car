@@ -1,55 +1,37 @@
+
 <template name="evaluate">
 <view class="grade-panel">
   <view class="up-panel">
     <image src="../../static/image/user.png"></image>
     <view class="righttext">
-      <text style="font-size:35rpx;">用户</text>
+      <text style="font-size:35rpx;">上门服务</text>
       <view class="delivertime">
         <text style="font-size:30rpx;">到达时间 {{time}}</text>
-        <picker class="picker" mode="time" value="{{time}}" bindchange="timechange">
-        <view style="  display: flex;flex-direction: row;">
-          <view class="tip">? </view>
-          <text style="font-size:30rpx;color:#ABABAB;">时间不准</text>
-        </view>
-        </picker>
+        
       </view>
     </view>
   </view>
   <view class="bottom-panel">
-    <text style="color:#ABABAB;font-size:30rpx;margin:10rpx 20rpx 0rpx 0rpx">服务质量</text>
+    <text style="color:#ABABAB;font-size:35rpx;margin:10rpx 20rpx 0rpx 0rpx;height:100rpx;line-height:100rpx">用户态度</text>
     <block wx:for="{{[1,2,3,4,5]}}">
       <block wx:if="{{item<=service_grade}}">
-      <view bindtap="service_grade" data-index="{{item}}">
-      <image src="../../static/image/star_taken.png"></image>
-      </view>
+     
+      <image src="../../static/image/star_taken.png" bindtap="service_grade" data-index="{{item}}"></image>
+     
       </block>
       <block wx:elif="{{item==(service_grade+0.5)}}">
-      <view bindtap="service_grade" data-index="{{item}}">
-      <image src="../../static/image/star_halftaken.png"></image>
-      </view>
+     
+      <image src="../../static/image/star_halftaken.png" bindtap="service_grade" data-index="{{item}}"></image>
+     
       </block>
       <block wx:else>
-      <view bindtap="service_grade" data-index="{{item}}">
-      <image src="../../static/image/star.png"></image>
-      </view>
+      
+      <image src="../../static/image/star.png" bindtap="service_grade" data-index="{{item}}"></image>
+      
       </block>
     </block>
   </view>
-  <view class="bottom-panel" style="margin-top:20rpx;">
-    <text style="color:#ABABAB;font-size:30rpx;margin:10rpx 20rpx 0rpx 0rpx">软件体验</text>
-    <block wx:for="{{[1,2,3,4,5]}}">
-      <block wx:if="{{index<software_grade}}">
-      <view bindtap="software_grade" data-index="{{item}}">
-      <image src="../../static/image/star_taken.png"></image>
-      </view>
-      </block>
-      <block wx:else>
-      <view bindtap="software_grade" data-index="{{item}}">
-      <image src="../../static/image/star.png"></image>
-      </view>
-      </block>
-    </block>
-  </view>
+  
 </view>
 
 <form bindsubmit="formSubmit">
@@ -79,7 +61,7 @@
     </view>
   </view>
   <view class="input-panel">
-  <textarea name="evaluate" placeholder="点评一下吧，您的意见很重要哦！" placeholder-style="color:#cccccc;"/>
+  <textarea name="evaluate" placeholder="对此次服务的用户，做出您的点评吧！" placeholder-style="color:#cccccc;"/>
   </view>
 </view>
 

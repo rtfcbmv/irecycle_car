@@ -269,8 +269,8 @@ white-space: nowrap;
   text-align:center;
 }
 .uplist-panel .item.active{
-  color:#FAC328;
-  border-bottom:5rpx solid #FAC328;
+  color:#C51A29;
+  border-bottom:5rpx solid #C51A29;
 }
 
 .empty-list{
