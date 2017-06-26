@@ -246,7 +246,18 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    return {
+      title: '我来收之回收车端', // 分享标题
+      path: '/pages/orders/orders',
+      success: function () {
+        wx.showToast({
+          title: '转发成功',
+          mask: true,
+        })
+      },
+      fail: function () {
+      }
+    }
   },
 
   /**
