@@ -76,24 +76,28 @@ page{
     display:flex;
     flex-direction:row;
     justify-content: center;
-    line-height:100rpx;
+    margin-top:30rpx;
 }
 .info-panel .info-item text{
     width: 180rpx;
     font-size:35rpx;
     text-align:justify;
+    height:80rpx;
+    line-height:80rpx;
+    /*border:1rpx solid #000;*/
 }
 .info-panel .info-item input{
-    left:200rpx;
-    margin-top:25rpx;
     font-size:30rpx; 
     border-bottom:1rpx solid #cccccc;
     width: 400rpx;
     text-align: center;
+    border-radius: 10rpx;
+    box-shadow: 1rpx 1rpx 1rpx 1rpx rgba(35, 34, 33, 0.2) inset;
+    height:80rpx;
 }
 .submit-buttun{
     margin-top:40rpx;
-    width:600rpx;
+    width:70%;
     height:80rpx;
     align-items:center;
     border-radius: 10rpx;
@@ -104,4 +108,27 @@ page{
 .no-use{
     color: #aaaaaa;
     background: #cccccc
+}
+
+.prompt{
+  position:absolute;
+  top:700rpx;
+  left:10%;
+  align-items:center;
+  width:80%;
+  height:250rpx;
+  justify-content: center;
+  box-shadow: 1rpx 1rpx 1rpx rgba(30,33,39,0.4);
+  border: 1rpx solid rgba(30,33,39,0.4);
+}
+.prompt .title{
+  text-align:center;
+  color:rgb(230,227,101);
+  font-size:60rpx;
+  margin:40rpx 0rpx 30rpx 0rpx;
+}
+.prompt .content{
+  text-align:center;
+  color:rgb(241,124,103);
+  font-size:55rpx;
 }

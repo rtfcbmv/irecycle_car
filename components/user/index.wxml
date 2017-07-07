@@ -42,18 +42,9 @@
     <text>联系电话</text>
     <input name="phone" placeholder="请输入联系电话" value=""></input>
   </view>
-
-  <!--<view class="info-item">
-    <text>用户名</text>
-    <input name="name" placeholder="请输入pc端用户名" value=""></input>
-  </view>
-
-  <view class="info-item">
-    <text>密码</text>
-    <input name="passwd" type="password" placeholder="请输入pc端密码" value="" bindinput="passwd" ></input>
-  </view>-->
   
 </view>
+
 
 <block wx:if="{{confirm==1}}">
 <button class="submit-buttun" formType="submit">提交</button>
@@ -62,6 +53,17 @@
 <button class="submit-buttun no-use" >提交</button>
 </block>
 </form>
+
+
+<view class="prompt" bindtap="call">
+  <view class="title">
+  加盟热线
+  </view>
+  <view class="content">
+  {{phoneNumber}}
+  </view>
+</view>
+
 
 </template>
 

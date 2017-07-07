@@ -7,7 +7,7 @@ Page({
   },
 
 gotomap:function(e){
-  console.log(e);
+  //console.log(e);
   var latitude = e.currentTarget.dataset.order.latitude;
   var longitude  = e.currentTarget.dataset.order.longitude;
   wx.openLocation({

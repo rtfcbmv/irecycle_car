@@ -60,7 +60,7 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         wx.navigateBack({
           delta: 1
         })
@@ -73,7 +73,7 @@ Page({
     wx.getStorage({
       key: 'orderdetail',
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         that.setData({
           time: res.data.order.time.split(" ")[1],
           orderid: res.data.order.id

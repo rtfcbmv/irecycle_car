@@ -3,9 +3,14 @@ var app = getApp()
 Page({
 
   data: {
-    confirm:0
+    confirm:0,
+    phoneNumber: '0451-82930699'
   },
-
+  call:function(){
+    wx.makePhoneCall({
+      phoneNumber: this.data.phoneNumber,
+    })
+  },
   passwd:function(res){
     var node=0
     if (res.detail.value)
@@ -29,16 +34,15 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        console.log('注册界面',res)
+        //console.log('注册界面',res)
         app.globalData.userid = res.data.driverid
         if(res.data.status=='failed'){
           wx.showToast({
             title: '认证失败，请输入正确的信息',
-            icon:'loading'
+            icon:'../../static/image/tipicon.png'
           })
         }
         else{
-
           wx.reLaunch({
             url: '../orders/orders',
           })
